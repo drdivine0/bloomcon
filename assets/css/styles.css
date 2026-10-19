@@ -1,0 +1,249 @@
+/*
+ * BLOOMCON 2.0 site styles.
+ * Plain CSS: Tailwind (loaded from its CDN) provides the utility classes in index.html,
+ * this file holds the colour tokens and the few components utilities can't express cleanly.
+ */
+
+/* ---------- Colour tokens ----------
+   From the BLOOMCON flower: forest green, cream, salmon, mustard and mint.
+   Values are "R G B" so Tailwind can add opacity, e.g. bg-forest/20.
+
+   Brand colours (fixed in both themes):
+     forest  #163828   cream   #FFF7EE
+     salmon  #F4A98C   mustard #E8B13B   mint #80C68B
+   "-deep" variants are darker versions that pass contrast as text on cream. */
+:root {
+  --forest: 22 56 40; --cream: 255 247 238;
+  --salmon: 244 169 140; --mustard: 232 177 59; --mint: 128 198 139;
+
+  --paper: 255 251 245; --surface: 248 240 228; --ink: 22 56 40; --muted: 82 103 92; --line: 230 219 202; --shadow: 22 56 40;
+  --brand: 22 56 40; --on-brand: 255 247 238;
+  --salmon-deep: 176 74 48; --salmon-soft: 253 232 222;
+  --mustard-deep: 140 98 0; --mustard-soft: 252 240 208;
+  --mint-deep: 31 110 61; --mint-soft: 226 243 228;
+  --forest-soft: 226 234 228;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 13 31 22; --surface: 22 46 34; --ink: 255 247 238; --muted: 178 196 186; --line: 45 74 58; --shadow: 0 0 0;
+    --brand: 232 177 59; --on-brand: 22 56 40;
+    --salmon-deep: 244 169 140; --salmon-soft: 64 38 30;
+    --mustard-deep: 232 177 59; --mustard-soft: 58 46 18;
+    --mint-deep: 128 198 139; --mint-soft: 24 60 40;
+    --forest-soft: 30 60 45;
+    color-scheme: dark;
+  }
+}
+
+/* Each programme carries its phase colour: --c (strong, for text and borders),
+   --cs (soft, for backgrounds) and --cb (the bright brand colour, for the flower) */
+.tone-foundation { --c: var(--salmon-deep); --cs: var(--salmon-soft); --cb: var(--salmon); }
+.tone-pathway { --c: var(--mint-deep); --cs: var(--mint-soft); --cb: var(--mint); }
+.tone-proof { --c: var(--mustard-deep); --cs: var(--mustard-soft); --cb: var(--mustard); }
+.tone-marketplace { --c: var(--ink); --cs: var(--forest-soft); --cb: var(--ink); }
+
+.tone-text { color: rgb(var(--c)); }
+.tone-bg { background: rgb(var(--c)); }
+.tone-soft { background: rgb(var(--cs)); }
+.tone-border { border-color: rgb(var(--c)); }
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html.lock { overflow: hidden; }
+body { background: rgb(var(--paper)); color: rgb(var(--ink)); -webkit-font-smoothing: antialiased; }
+[x-cloak] { display: none !important; }
+:focus-visible { outline: 3px solid rgb(var(--mustard-deep) / .7); outline-offset: 3px; border-radius: 12px; }
+
+/* Headings use Unbounded, the wide display face from the BLOOMCON poster */
+.display, .h2, .wordmark { font-family: 'Unbounded', 'Figtree', system-ui, sans-serif; }
+.display { letter-spacing: -.02em; line-height: 1; text-wrap: balance; }
+.h2 { letter-spacing: -.005em; line-height: 1.15; font-weight: 700; text-wrap: balance; }
+.wordmark { font-weight: 800; letter-spacing: -.01em; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Icons from the inline Lucide sprite */
+.icon { fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Buttons ---------- */
+.btn, .btn-primary, .btn-outline, .btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  white-space: nowrap; border-radius: 9999px; font-weight: 600;
+  transition: color .15s, background-color .15s, border-color .15s, box-shadow .15s, filter .15s, opacity .15s;
+}
+.btn-primary { background: rgb(var(--brand)); color: rgb(var(--on-brand)); box-shadow: 0 1px 2px rgb(var(--shadow) / .08), 0 8px 24px -8px rgb(var(--shadow) / .14); }
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-outline { border: 1px solid rgb(var(--line)); background: rgb(var(--paper)); }
+.btn-outline:hover, .btn-ghost:hover { background: rgb(var(--surface)); }
+.btn-ghost { color: rgb(var(--muted)); }
+.btn-ghost:hover { color: rgb(var(--ink)); }
+.icon-btn { display: grid; place-items: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 9999px; }
+.icon-btn:hover { background: rgb(var(--surface)); }
+
+.chip { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.chip[aria-pressed="true"] { background: rgb(var(--ink)); color: rgb(var(--paper)); border-color: rgb(var(--ink)); }
+
+/* ---------- Programme cards ---------- */
+.prog-card { perspective: 1100px; }
+.card-inner { transform-style: preserve-3d; transition: border-color .25s ease, box-shadow .35s ease; }
+.card-inner:hover { box-shadow: 0 2px 6px rgb(var(--shadow) / .08), 0 28px 50px -18px rgb(var(--c) / .45); }
+.card-inner.is-sel { border-color: rgb(var(--c)); box-shadow: 0 0 0 1px rgb(var(--c)), 0 22px 44px -20px rgb(var(--c) / .55); }
+.spot {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .35s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(var(--c) / .14), transparent 55%);
+}
+.card-inner:hover .spot { opacity: 1; }
+.card-art { position: relative; height: 156px; overflow: hidden; }
+.card-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* Card flower: outer petals in three shades of the programme colour */
+.card-ring { fill: none; stroke: rgb(var(--c)); stroke-opacity: .25; stroke-width: 1.5; }
+.f-p1 { fill: rgb(var(--cb)); }
+.f-p2 { fill: color-mix(in srgb, rgb(var(--cb)) 55%, rgb(var(--cs))); }
+.f-p3 { fill: color-mix(in srgb, rgb(var(--c)) 75%, rgb(var(--cb))); }
+.card-art .f-inner { fill: rgb(var(--paper)); }
+.card-art .f-ring { stroke: rgb(var(--ink)); }
+.sel-badge { transform: scale(0); transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.is-sel .sel-badge { transform: scale(1); }
+
+.add-btn { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .15s ease; }
+.add-btn:active { transform: scale(.96); }
+.add-btn[aria-pressed="true"] { background: rgb(var(--c)); color: rgb(var(--paper)); border-color: rgb(var(--c)); }
+
+.burst-petal {
+  position: fixed; z-index: 90; width: 10px; height: 15px; margin: -7px 0 0 -5px; pointer-events: none;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+}
+
+/* ---------- Schedule ---------- */
+.slot { display: block; padding: 1rem; border: 1px solid rgb(var(--line)); border-radius: 1rem; background: rgb(var(--paper)); transition: box-shadow .15s; }
+.slot:hover { box-shadow: 0 1px 2px rgb(var(--shadow) / .08), 0 8px 24px -8px rgb(var(--shadow) / .14); }
+.slot-title { display: flex; align-items: center; gap: .5rem; font-weight: 600; }
+.slot-meta { display: block; margin-top: .25rem; font-size: .875rem; line-height: 1.25rem; color: rgb(var(--muted)); }
+
+/* ---------- FAQ accordion ----------
+   The grid-rows trick animates height without measuring. */
+.faq-q { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; text-align: left; font-size: 17px; font-weight: 600; }
+.acc { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.2, .8, .2, 1); }
+.acc.open { grid-template-rows: 1fr; }
+.acc > div { overflow: hidden; }
+
+/* ---------- Programme detail dialogs (native <dialog>) ----------
+   GSAP animates the inner panel: animating the <dialog> itself would detach it from the top layer. */
+.detail-dialog { margin: auto; width: calc(100% - 32px); max-width: 36rem; padding: 0; border: 0; background: transparent; color: rgb(var(--ink)); overflow: visible; }
+.detail-dialog::backdrop { background: rgb(var(--ink) / .45); backdrop-filter: blur(2px); }
+.detail-panel { max-height: 88vh; overflow-y: auto; border-radius: 28px; background: rgb(var(--paper)); box-shadow: 0 2px 6px rgb(var(--shadow) / .10), 0 24px 48px -12px rgb(var(--shadow) / .28); }
+.detail-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: 15px; }
+.detail-meta > span { display: inline-flex; align-items: center; gap: .5rem; }
+.detail-list { display: grid; gap: .625rem; margin-top: .75rem; }
+.detail-list > li { display: flex; gap: .75rem; }
+.detail-list > li::before { content: ""; flex-shrink: 0; width: .375rem; height: .375rem; margin-top: .5rem; border-radius: 9999px; background: rgb(var(--c)); }
+.detail-note { display: flex; gap: .75rem; margin-top: 1.5rem; padding: 1rem; border-radius: 1rem; background: rgb(var(--surface)); font-size: .875rem; line-height: 1.25rem; }
+
+/* ---------- Registration form ---------- */
+.label { font-size: .875rem; line-height: 1.25rem; font-weight: 600; }
+.error { font-size: .875rem; line-height: 1.25rem; color: rgb(220 38 38); }
+.field {
+  width: 100%; border: 1px solid rgb(var(--line)); background: rgb(var(--paper)); color: rgb(var(--ink));
+  border-radius: 12px; padding: 12px 14px; font-size: 16px; transition: border-color .2s, box-shadow .2s;
+}
+.field::placeholder { color: rgb(var(--muted) / .8); }
+.field:focus { outline: none; border-color: rgb(var(--ink)); box-shadow: 0 0 0 3px rgb(var(--mustard) / .35); }
+.field.bad { border-color: rgb(220 38 38); }
+select.field {
+  appearance: none; padding-right: 40px; background-repeat: no-repeat; background-position: right 12px center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.opt {
+  display: flex; width: 100%; align-items: center; gap: .75rem; padding: 1rem; text-align: left;
+  border: 1px solid rgb(var(--line)); border-radius: 1rem; transition: border-color .2s ease, background-color .2s ease;
+}
+.opt.on { border-color: rgb(var(--c)); background: rgb(var(--cs)); }
+.tick { display: grid; place-items: center; flex-shrink: 0; width: 1.5rem; height: 1.5rem; border: 2px solid rgb(var(--line)); transition: background-color .2s, border-color .2s; }
+.opt.on .tick { background: rgb(var(--c)); border-color: rgb(var(--c)); color: rgb(var(--paper)); }
+
+.drawer { height: 100%; }
+@media (max-width: 767px) { .drawer { height: calc(100% - 24px); margin-top: 24px; border-radius: 24px 24px 0 0; } }
+.qr svg { display: block; width: 100%; height: auto; }
+
+/* ---------- Hero ---------- */
+/* The flower mark, shared by the hero, cards and logo */
+.f-ring { fill: none; stroke: rgb(var(--forest)); stroke-width: 26; }
+.f-core { fill: rgb(var(--mustard)); }
+.f-inner { fill: rgb(var(--cream)); }
+
+.hero { background: rgb(var(--forest)); color: rgb(var(--cream)); }
+.hero-mark .f-ring { stroke: rgb(var(--forest)); }
+.hero-glow { position: absolute; border-radius: 9999px; filter: blur(80px); transform: translate(-50%, -50%); }
+
+/* The flower, centred on the stage while its petals gather. GSAP moves it later, so no CSS transform. */
+.hero-visual {
+  --fw: min(62vw, 46vh, 430px);
+  position: absolute; z-index: 1; width: var(--fw); aspect-ratio: 1;
+  left: calc(50% - var(--fw) / 2); top: calc(44% - var(--fw) / 2);
+}
+.tk-intro { position: absolute; inset-inline: 1.25rem; top: calc(44% + 3.5rem); text-align: center; }
+
+/* Colour takeover: six full-screen panels that wipe up in turn */
+.takeover { position: absolute; inset: 0; z-index: 2; }
+.tk-panel { position: absolute; inset: 0; overflow: hidden; color: rgb(var(--forest)); clip-path: inset(100% 0 0 0); }
+/* a big tinted petal grows in the corner, behind the text */
+.tk-petal { position: absolute; right: -8%; bottom: -30%; height: 120%; fill: rgb(var(--forest) / .14); }
+#heroFlower { overflow: visible; }
+.tk-name { font-size: clamp(2rem, 7.2vw, 6.25rem); line-height: .92; letter-spacing: -.01em; }
+.tk-word { display: inline-block; overflow: hidden; margin-right: .22em; padding-bottom: .08em; vertical-align: top; }
+.tk-word > span { display: inline-block; }
+.pill-salmon { background: rgb(var(--salmon)); }
+.pill-mint { background: rgb(var(--mint)); }
+.pill-mustard { background: rgb(var(--mustard)); }
+
+/* Final lockup. The flower lands in .o-slot, which stands in for the first "O". */
+.hero-final { position: absolute; inset: 0 0 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 1.25rem; text-align: center; }
+.o-slot { position: relative; display: inline-block; width: .8em; height: .8em; margin: 0 .03em; vertical-align: -.02em; }
+.slot-mark { display: block; width: 100%; height: 100%; }
+
+/* Circular "Free entry" sticker */
+.sticker { border-radius: 9999px; transition: transform .3s cubic-bezier(.3, 1.6, .5, 1); }
+.sticker:hover { transform: scale(1.06) rotate(-6deg); }
+.sticker-text { animation: spin 18s linear infinite; }
+
+/* Compact countdown */
+.countdown { display: inline-flex; align-items: baseline; gap: 1px; padding: .35rem .6rem; border-radius: .6rem; background: rgb(var(--cream) / .07); box-shadow: inset 0 0 0 1px rgb(var(--cream) / .1); }
+.countdown b { font-family: 'Unbounded', sans-serif; font-size: 1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.countdown i { font-style: normal; font-size: .75rem; color: rgb(var(--cream) / .55); }
+
+/* Marquee: two identical runs slide left by one run's width, then repeat */
+.marquee { z-index: 3; overflow: hidden; }
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee-run { display: flex; align-items: center; gap: 1.5rem; padding-right: 1.5rem; white-space: nowrap; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* The section after the hero slides up over it */
+.journey { box-shadow: 0 -24px 48px -24px rgb(0 0 0 / .35); }
+
+/* ---------- Hero modes ----------
+   By default (no JS, reduced motion, or GSAP blocked) only the final lockup shows, with a
+   static flower in the "O". The scroll story needs JS and motion; motion.js adds .hero-static
+   if it can't run, which brings back the default. */
+.tk-intro, .takeover, .hero-visual, .hero-skip, .hero-replay { display: none; }
+.hero-skip, .hero-replay { z-index: 4; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero:not(.hero-static) .tk-intro,
+  .js .hero:not(.hero-static) .takeover,
+  .js .hero:not(.hero-static) .hero-visual { display: block; }
+  .js .hero:not(.hero-static) .hero-skip,
+  .js .hero:not(.hero-static) .hero-replay { display: inline-flex; opacity: 0; visibility: hidden; }
+  .js .hero:not(.hero-static) [data-final] { opacity: 0; visibility: hidden; }
+  .js .hero:not(.hero-static) .slot-mark { opacity: 0; }
+  /* hidden until motion.js has folded the petals, so the open flower never flashes */
+  .js .hero:not(.hero-static):not(.hero-ready) .hero-visual { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sticker-text, .marquee-track { animation: none !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BLOOMCON 2.0 · Free Growth Conference in Lagos · 14 November 2026</title>
+  <meta name="description" content="BLOOMCON 2.0 is a free one-day growth conference for professionals, HR leaders, entrepreneurs and job seekers. Saturday 14 November 2026, The Elevation Church, Greater Lekki, Lagos.">
+  <link rel="canonical" href="https://drdivine0.github.io/bloomcon/">
+  <meta name="theme-color" content="#163828">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BLOOMCON 2.0">
+  <meta property="og:title" content="BLOOMCON 2.0 · One seed. Six ways to grow.">
+  <meta property="og:description" content="A free growth conference for professionals, HR leaders, entrepreneurs and job seekers. Saturday 14 November 2026, Greater Lekki, Lagos.">
+  <meta property="og:url" content="https://drdivine0.github.io/bloomcon/">
+  <meta property="og:image" content="https://drdivine0.github.io/bloomcon/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The BLOOMCON 2.0 flower with the event date and venue">
+  <meta property="og:locale" content="en_NG">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Fonts and styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="assets/js/tailwind.config.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "BLOOMCON 2.0",
+    "description": "A free one-day growth conference for professionals, HR leaders, entrepreneurs and job seekers, with skills sessions, wellbeing, employer interviews, an AI workshop, funder office hours and a trade fair.",
+    "startDate": "2026-11-14T08:30:00+01:00",
+    "endDate": "2026-11-14T17:30:00+01:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "isAccessibleForFree": true,
+    "image": ["https://drdivine0.github.io/bloomcon/assets/img/og-image.jpg"],
+    "url": "https://drdivine0.github.io/bloomcon/",
+    "location": {
+      "@type": "Place",
+      "name": "The Elevation Church",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Greater Lekki, Lagos",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "BCMG, the Business & Career Ministry Group of The Elevation Church"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "NGN",
+      "availability": "https://schema.org/InStock",
+      "url": "https://drdivine0.github.io/bloomcon/#register",
+      "validFrom": "2026-10-01T00:00:00+01:00"
+    }
+  }
+  </script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script defer src="assets/js/motion.js"></script>
+  <script defer src="assets/js/content.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.14.1/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans" x-data="site" x-effect="document.documentElement.classList.toggle('lock', regOpen || mobileNav || detailOpen)">
+
+<!-- Icon sprite: Lucide icons (ISC licence, lucide.dev). Use as <svg class="icon"><use href="#i-NAME"/></svg> -->
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true"><defs><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol><symbol id="i-calendar-plus" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol><symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol><symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol><symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol><symbol id="i-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol><symbol id="i-ticket" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="logo-mark" viewBox="-400 -400 800 800">  <ellipse fill="#F4A98C" data-r="0" cx="0" cy="-195" rx="112" ry="194" transform="rotate(0)"/>  <ellipse fill="#80C68B" data-r="60" cx="0" cy="-195" rx="112" ry="194" transform="rotate(60)"/>  <ellipse fill="#E8B13B" data-r="120" cx="0" cy="-195" rx="112" ry="194" transform="rotate(120)"/>  <ellipse fill="#F4A98C" data-r="180" cx="0" cy="-195" rx="112" ry="194" transform="rotate(180)"/>  <ellipse fill="#80C68B" data-r="240" cx="0" cy="-195" rx="112" ry="194" transform="rotate(240)"/>  <ellipse fill="#E8B13B" data-r="300" cx="0" cy="-195" rx="112" ry="194" transform="rotate(300)"/>  <ellipse fill="#FFF7EE" data-r="30" cx="0" cy="-108" rx="52" ry="108" transform="rotate(30)"/>  <ellipse fill="#FFF7EE" data-r="90" cx="0" cy="-108" rx="52" ry="108" transform="rotate(90)"/>  <ellipse fill="#FFF7EE" data-r="150" cx="0" cy="-108" rx="52" ry="108" transform="rotate(150)"/>  <ellipse fill="#FFF7EE" data-r="210" cx="0" cy="-108" rx="52" ry="108" transform="rotate(210)"/>  <ellipse fill="#FFF7EE" data-r="270" cx="0" cy="-108" rx="52" ry="108" transform="rotate(270)"/>  <ellipse fill="#FFF7EE" data-r="330" cx="0" cy="-108" rx="52" ry="108" transform="rotate(330)"/>  <circle r="60" fill="none" stroke="#163828" stroke-width="26"/>  <circle r="47" fill="#E8B13B"/></symbol></defs></svg>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-xl">
+  <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5" aria-label="Main">
+    <a href="#top" class="flex items-center gap-2.5 rounded-full" aria-label="BLOOMCON 2.0 home">
+      <svg class="h-9 w-9" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="wordmark whitespace-nowrap text-[15px]">BLOOMCON <span class="text-mustard-deep">2.0</span></span>
+    </a>
+    <ul class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
+      <template x-for="link in navLinks" :key="link.href">
+        <li><a :href="link.href" class="rounded-full px-3.5 py-2 hover:bg-surface hover:text-ink" x-text="link.label"></a></li>
+      </template>
+    </ul>
+    <div class="flex items-center gap-2">
+      <button type="button" x-show="!myReg" @click="openRegister()" class="btn-primary px-4 py-2.5 text-sm sm:px-5">
+        <span class="sm:hidden">Register</span><span class="hidden sm:inline">Register free</span>
+      </button>
+      <button type="button" x-cloak x-show="myReg" @click="openTicket()" class="btn bg-ink px-4 py-2.5 text-sm text-paper hover:opacity-90 sm:px-5">
+        <svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-ticket"/></svg> My ticket
+      </button>
+      <button type="button" @click="mobileNav = true" class="icon-btn md:hidden" aria-label="Open menu" :aria-expanded="mobileNav" aria-controls="mobileMenu">
+        <svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile menu -->
+<div x-cloak x-show="mobileNav" x-transition.opacity class="fixed inset-0 z-[70] bg-ink/40 md:hidden" @click="mobileNav = false"></div>
+<nav id="mobileMenu" x-cloak x-show="mobileNav" x-trap.inert="mobileNav" @keydown.escape.window="mobileNav = false" aria-label="Mobile"
+     x-transition:enter="transition duration-300 ease-out" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+     x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+     class="fixed right-0 top-0 z-[71] flex h-full w-[82%] max-w-sm flex-col bg-paper p-6 md:hidden">
+  <div class="mb-6 flex items-center justify-between">
+    <span class="font-bold">Menu</span>
+    <button type="button" @click="mobileNav = false" class="icon-btn" aria-label="Close menu"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <template x-for="link in navLinks" :key="link.href">
+    <a :href="link.href" @click="mobileNav = false" class="rounded-xl px-3 py-3.5 text-lg font-semibold hover:bg-surface" x-text="link.label"></a>
+  </template>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<!--
+  The hero plays a short title sequence on its own (motion.js): six full-screen colour panels, one per
+  programme, then six petals gather into the flower, which spins and lands in the "O" of the wordmark.
+  Scrolling or Skip jumps to the end. Without animation (reduced motion, GSAP blocked) only the final lockup shows.
+-->
+<section id="top" class="hero relative pb-10" aria-labelledby="heroTitle">
+  <div class="hero-stage relative h-[calc(100svh-4rem)] min-h-[620px] overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="hero-glow left-[60%] top-[30%] h-[460px] w-[460px] bg-salmon/[.12]"></div>
+      <div class="hero-glow left-[75%] top-[65%] h-[380px] w-[380px] bg-mint/[.14]"></div>
+      <div class="hero-glow left-[40%] top-[70%] h-[320px] w-[320px] bg-mustard/10"></div>
+    </div>
+
+    <!-- Intro: just the seed and the line -->
+    <div class="tk-intro" aria-hidden="true">
+      <p class="font-display text-4xl font-bold text-cream sm:text-5xl">One seed.</p>
+      <p class="mt-1 font-display text-2xl font-medium text-salmon sm:text-3xl">Six ways to grow.</p>
+    </div>
+
+    <!-- Six colour panels, one per programme (decorative: the programme cards below carry this content) -->
+    <div class="takeover" aria-hidden="true">
+      <template x-for="(petal, i) in heroPetals" :key="petal.id">
+        <div class="tk-panel" :class="petal.colour">
+          <svg class="tk-petal" viewBox="-120 -400 240 400"><ellipse cx="0" cy="-200" rx="116" ry="198"/></svg>
+          <div class="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pb-16">
+            <p class="tk-line font-display text-xs font-bold uppercase tracking-[.2em] sm:text-sm">
+              <span x-text="'0' + (i + 1) + ' / 06'"></span> · <span x-text="phases[byId(petal.id).phase]"></span>
+            </p>
+            <p class="tk-name mt-4 font-display font-extrabold uppercase">
+              <template x-for="word in byId(petal.id).name.split(' ')"><span class="tk-word"><span x-text="word"></span></span></template>
+            </p>
+            <p class="tk-line mt-5 max-w-xl text-lg font-semibold sm:text-2xl" x-text="byId(petal.id).tagline"></p>
+            <p class="tk-line mt-2 text-sm font-medium opacity-80 sm:text-base" x-text="byId(petal.id).time + ' · ' + byId(petal.id).place"></p>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- The flower: petals gather here, then it flies into the "O" -->
+    <div id="heroVisual" class="hero-visual" aria-hidden="true">
+      <svg id="heroFlower" class="hero-mark absolute inset-[11%]" viewBox="-440 -440 880 880">
+        <g class="f-flower">
+          <ellipse class="f-petal" fill="#F4A98C" data-r="0" cx="0" cy="-195" rx="112" ry="194" transform="rotate(0)"/>
+          <ellipse class="f-petal" fill="#80C68B" data-r="60" cx="0" cy="-195" rx="112" ry="194" transform="rotate(60)"/>
+          <ellipse class="f-petal" fill="#E8B13B" data-r="120" cx="0" cy="-195" rx="112" ry="194" transform="rotate(120)"/>
+          <ellipse class="f-petal" fill="#F4A98C" data-r="180" cx="0" cy="-195" rx="112" ry="194" transform="rotate(180)"/>
+          <ellipse class="f-petal" fill="#80C68B" data-r="240" cx="0" cy="-195" rx="112" ry="194" transform="rotate(240)"/>
+          <ellipse class="f-petal" fill="#E8B13B" data-r="300" cx="0" cy="-195" rx="112" ry="194" transform="rotate(300)"/>
+          <ellipse class="f-inner" data-r="30" cx="0" cy="-108" rx="52" ry="108" transform="rotate(30)"/>
+          <ellipse class="f-inner" data-r="90" cx="0" cy="-108" rx="52" ry="108" transform="rotate(90)"/>
+          <ellipse class="f-inner" data-r="150" cx="0" cy="-108" rx="52" ry="108" transform="rotate(150)"/>
+          <ellipse class="f-inner" data-r="210" cx="0" cy="-108" rx="52" ry="108" transform="rotate(210)"/>
+          <ellipse class="f-inner" data-r="270" cx="0" cy="-108" rx="52" ry="108" transform="rotate(270)"/>
+          <ellipse class="f-inner" data-r="330" cx="0" cy="-108" rx="52" ry="108" transform="rotate(330)"/>
+          <circle class="f-ring" r="60"/>
+          <circle class="f-core" r="47"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Final lockup: the flower lands in the first "O" -->
+    <div class="hero-final">
+      <p data-final class="text-[11px] font-semibold uppercase tracking-[.22em] text-cream/55">BCMG · The Elevation Church presents</p>
+      <h1 id="heroTitle" class="mt-4" data-final>
+        <span class="sr-only">BLOOMCON 2.0</span>
+        <!-- sizes follow the shorter of width and height, so the lockup fits short screens too -->
+        <span class="wordmark block text-[clamp(2.6rem,min(10.5vw,13vh),6.5rem)] leading-[.95] text-cream" aria-hidden="true">BL<span class="o-slot"><svg class="slot-mark"><use href="#logo-mark"/></svg></span>OMCON</span>
+        <span class="wordmark mt-1 block text-[clamp(2.2rem,min(8vw,9vh),4.5rem)] leading-none text-mustard" aria-hidden="true">2.0</span>
+      </h1>
+      <p data-final class="mt-4 font-display text-xl font-medium text-salmon sm:text-2xl">One seed. Six ways to grow.</p>
+      <p data-final class="mt-2 max-w-xl text-balance text-[15px] text-cream/70">A free one-day conference for professionals, business owners and executives.</p>
+      <div data-final class="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+        <time datetime="2026-11-14T08:30" class="rounded-xl bg-mustard px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-forest">Sat 14 Nov 2026 · 8:30 AM</time>
+        <span class="inline-flex items-center gap-1.5 text-sm text-cream/70"><svg class="icon h-4 w-4 text-salmon" aria-hidden="true"><use href="#i-map-pin"/></svg>The Elevation Church, Greater Lekki</span>
+      </div>
+      <div data-final class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <button type="button" @click="openRegister()" class="btn bg-cream px-6 py-3 text-forest hover:bg-white">Register free</button>
+        <a href="#programmes" class="btn border border-cream/30 px-6 py-3 text-cream hover:bg-cream/10">Explore programmes</a>
+      </div>
+      <div data-final class="mt-5 flex items-center justify-center gap-2" role="timer" aria-label="Time until BLOOMCON 2.0">
+        <span class="mr-1 text-[11px] font-semibold uppercase tracking-[.18em] text-cream/45">Starts in</span>
+        <span class="countdown"><b x-text="countdown.days">–</b><i>d</i></span>
+        <span class="countdown"><b x-text="countdown.hours">–</b><i>h</i></span>
+        <span class="countdown"><b x-text="countdown.minutes">–</b><i>m</i></span>
+        <span class="countdown"><b x-text="countdown.seconds">–</b><i>s</i></span>
+      </div>
+    </div>
+
+    <!-- Story controls: Skip while it plays, Replay once it has finished -->
+    <button type="button" class="hero-skip btn absolute bottom-[4.25rem] right-5 bg-forest/85 px-4 py-2 text-sm text-cream backdrop-blur hover:bg-forest sm:right-8">Skip <svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+    <button type="button" class="hero-replay btn absolute bottom-[4.25rem] left-5 px-3 py-2 text-sm text-cream/60 hover:text-cream sm:left-8">
+      <svg class="h-4 w-4" aria-hidden="true"><use href="#logo-mark"/></svg> Replay the bloom
+    </button>
+
+    <!-- Spinning sticker -->
+    <button type="button" data-final @click="openRegister()" class="sticker absolute bottom-[14%] right-[5%] hidden h-28 w-28 lg:block" aria-label="Register free">
+      <svg class="sticker-text absolute inset-0 h-full w-full" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="stickerPath" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+        <circle cx="60" cy="60" r="58" class="fill-mustard"/>
+        <text class="fill-forest font-display text-[10.5px] font-bold uppercase" letter-spacing="1.5"><textPath href="#stickerPath" textLength="272">Free entry • Register now •</textPath></text>
+      </svg>
+      <svg class="absolute left-[30%] top-[30%] h-[40%] w-[40%]" aria-hidden="true"><use href="#logo-mark"/></svg>
+    </button>
+
+    <!-- Marquee band (decorative: the same details are in the text above) -->
+    <div class="marquee absolute inset-x-0 bottom-0 border-y border-forest bg-mustard py-3 text-forest" aria-hidden="true">
+    <div class="marquee-track font-display text-sm font-bold uppercase tracking-wide">
+      <div class="marquee-run"><span>One seed. Six ways to grow.</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Sat 14 Nov 2026</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>The Elevation Church, Greater Lekki</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Free entry</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Register now</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg></div>
+      <div class="marquee-run"><span>One seed. Six ways to grow.</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Sat 14 Nov 2026</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>The Elevation Church, Greater Lekki</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Free entry</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg><span>Register now</span><svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#logo-mark"/></svg></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section class="journey relative z-10 -mt-10 rounded-t-[40px] bg-surface" aria-labelledby="journeyTitle">
+  <div class="mx-auto max-w-6xl px-5 py-20">
+    <div class="max-w-2xl">
+      <h2 id="journeyTitle" class="h2 text-3xl sm:text-4xl">One day, one connected journey</h2>
+      <p class="mt-4 text-lg text-muted">Everyone starts together in the Main Hall. In the afternoon you choose the track that fits what you need. The day closes with funding awarded live on stage.</p>
+    </div>
+    <ol class="mt-12 grid gap-4 md:grid-cols-3">
+      <li class="reveal tone-foundation rounded-3xl bg-paper p-7 shadow-lift">
+        <div class="flex items-center gap-3"><span class="tone-soft tone-text grid h-9 w-9 place-items-center rounded-full text-sm font-bold">1</span><span class="tone-text font-semibold">The Foundation</span></div>
+        <h3 class="mt-5 text-xl font-semibold">Morning, for everyone</h3>
+        <p class="mt-2 text-muted">Bloom Stage sets the purpose, The Playbook sharpens how you perform, and WellX looks after the person doing the work.</p>
+      </li>
+      <li class="reveal tone-pathway rounded-3xl bg-paper p-7 shadow-lift">
+        <div class="flex items-center gap-3"><span class="tone-soft tone-text grid h-9 w-9 place-items-center rounded-full text-sm font-bold">2</span><span class="tone-text font-semibold">The Pathway</span></div>
+        <h3 class="mt-5 text-xl font-semibold">Afternoon, your choice</h3>
+        <p class="mt-2 text-muted">Pick one: JobFest if you need a job, Globaverse to work smarter with AI, or BloomConnect if your business is ready for funding.</p>
+      </li>
+      <li class="reveal tone-proof rounded-3xl bg-paper p-7 shadow-lift">
+        <div class="flex items-center gap-3"><span class="tone-soft tone-text grid h-9 w-9 place-items-center rounded-full text-sm font-bold">3</span><span class="tone-text font-semibold">The Proof</span></div>
+        <h3 class="mt-5 text-xl font-semibold">Close, together</h3>
+        <p class="mt-2 text-muted">The Bloom Fund recognises and funds ten accelerator graduates in front of the whole hall.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PROGRAMMES ============ -->
+<section id="programmes" class="mx-auto max-w-6xl overflow-x-clip px-5 py-24" aria-labelledby="programmesTitle">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-2xl">
+      <h2 id="programmesTitle" class="h2 text-3xl sm:text-4xl">Choose your programmes</h2>
+      <p class="mt-4 text-lg text-muted">Add the sessions you want, then register once. Morning sessions are open to all. The three afternoon tracks run at the same time, so pick one.</p>
+    </div>
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Filter programmes">
+      <template x-for="f in filters" :key="f.id">
+        <button type="button" class="chip rounded-full border border-line px-4 py-2 text-sm font-semibold" :aria-pressed="filter === f.id" @click="setFilter(f.id)" x-text="f.label"></button>
+      </template>
+    </div>
+  </div>
+
+  <!-- Programme card: one template, rendered for every entry in PROGRAMS (content.js) -->
+  <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <template x-for="p in programs" :key="p.id">
+      <article class="prog-card" :id="p.id" :class="'tone-' + p.phase" x-show="visible(p.phase)">
+        <div class="card-inner relative flex h-full flex-col overflow-hidden rounded-[28px] border border-line bg-paper" :class="has(p.id) && 'is-sel'">
+          <div class="spot"></div>
+          <div class="card-art tone-soft">
+            <svg viewBox="0 0 320 156" aria-hidden="true">
+              <circle class="card-ring" cx="160" cy="78" r="72"/>
+              <g class="f-flower" transform="translate(160 78) scale(.165)">
+                <ellipse class="f-petal f-p1" data-r="0" cx="0" cy="-195" rx="112" ry="194" transform="rotate(0)"/>
+                <ellipse class="f-petal f-p2" data-r="60" cx="0" cy="-195" rx="112" ry="194" transform="rotate(60)"/>
+                <ellipse class="f-petal f-p3" data-r="120" cx="0" cy="-195" rx="112" ry="194" transform="rotate(120)"/>
+                <ellipse class="f-petal f-p1" data-r="180" cx="0" cy="-195" rx="112" ry="194" transform="rotate(180)"/>
+                <ellipse class="f-petal f-p2" data-r="240" cx="0" cy="-195" rx="112" ry="194" transform="rotate(240)"/>
+                <ellipse class="f-petal f-p3" data-r="300" cx="0" cy="-195" rx="112" ry="194" transform="rotate(300)"/>
+                <ellipse class="f-inner" data-r="30" cx="0" cy="-108" rx="52" ry="108" transform="rotate(30)"/>
+                <ellipse class="f-inner" data-r="90" cx="0" cy="-108" rx="52" ry="108" transform="rotate(90)"/>
+                <ellipse class="f-inner" data-r="150" cx="0" cy="-108" rx="52" ry="108" transform="rotate(150)"/>
+                <ellipse class="f-inner" data-r="210" cx="0" cy="-108" rx="52" ry="108" transform="rotate(210)"/>
+                <ellipse class="f-inner" data-r="270" cx="0" cy="-108" rx="52" ry="108" transform="rotate(270)"/>
+                <ellipse class="f-inner" data-r="330" cx="0" cy="-108" rx="52" ry="108" transform="rotate(330)"/>
+                <circle class="f-ring" r="60"/>
+                <circle class="f-core" r="47"/>
+              </g>
+            </svg>
+            <span class="card-icon tone-text absolute left-5 top-5 z-[2] grid h-11 w-11 place-items-center rounded-full bg-paper shadow-lift"><svg class="icon h-5 w-5" aria-hidden="true"><use :href="'#i-' + p.icon"/></svg></span>
+            <span class="sel-badge tone-bg absolute right-5 top-5 z-[2] grid h-8 w-8 place-items-center rounded-full text-paper"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </div>
+          <div class="relative z-[2] flex flex-1 flex-col p-6">
+            <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span class="tone-text font-semibold" x-text="phases[p.phase]"></span><span class="tnum text-muted" x-text="p.time"></span></p>
+            <h3 class="mt-2 text-[22px] font-bold tracking-tight" x-text="p.name"></h3>
+            <p class="mt-1 font-medium text-ink/80" x-text="p.tagline"></p>
+            <p class="mt-3 text-[15px] leading-relaxed text-muted" x-text="p.summary"></p>
+            <div class="mt-auto flex items-center gap-2 pt-6">
+              <button type="button" class="add-btn tone-border tone-text btn flex-1 border-[1.5px] px-4 py-2.5 text-sm" :aria-pressed="has(p.id)" @click="toggle(p.id, $event)" x-text="has(p.id) ? 'Added' : 'Add to my day'"></button>
+              <button type="button" class="btn-ghost px-4 py-2.5 text-sm" @click="openDetail(p, $el)" aria-haspopup="dialog">Details</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section id="schedule" class="border-y border-line/70 bg-surface" aria-labelledby="scheduleTitle">
+  <div class="mx-auto max-w-6xl px-5 py-24">
+    <div class="grid gap-12 lg:grid-cols-[1fr_2fr]">
+      <div>
+        <h2 id="scheduleTitle" class="h2 text-3xl sm:text-4xl">The day at a glance</h2>
+        <p class="mt-4 text-lg text-muted">Saturday, 14 November 2026. The Main Hall closes at 4:00 PM; the Trade Fair stays open until 5:30 PM.</p>
+        <p class="mt-4 text-sm text-muted">Times may shift slightly. Registered guests receive the final programme on WhatsApp.</p>
+      </div>
+      <ol>
+        <template x-for="row in schedule" :key="row.time">
+          <li class="grid grid-cols-[84px_1fr] gap-5 border-b border-line py-5 last:border-0 sm:grid-cols-[110px_1fr]">
+            <p class="tnum pt-0.5 text-[15px] font-semibold" x-text="row.time"></p>
+            <div>
+              <div x-show="row.programs" class="grid gap-3" :class="{ 'sm:grid-cols-2': row.programs?.length === 2, 'sm:grid-cols-3': row.programs?.length === 3 }">
+                <template x-for="p in (row.programs ?? []).map((id) => byId(id))" :key="p.id">
+                  <a :href="'#' + p.id" @click.prevent="jumpTo(p.id)" class="slot" :class="'tone-' + p.phase">
+                    <span class="slot-title"><span class="tone-bg h-2.5 w-2.5 shrink-0 rounded-full"></span><span x-text="p.name"></span></span>
+                    <span class="slot-meta" x-text="p.time + ' in ' + p.place"></span>
+                  </a>
+                </template>
+              </div>
+              <p x-show="row.title" class="font-semibold" x-text="row.title"></p>
+              <p x-show="row.note" class="mt-1 text-sm text-muted" :class="row.programs && 'mt-2'" x-text="row.note"></p>
+            </div>
+          </li>
+        </template>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="mx-auto max-w-6xl px-5 py-24" aria-labelledby="whoTitle">
+  <h2 id="whoTitle" class="h2 max-w-2xl text-3xl sm:text-4xl">Built for people who are building something</h2>
+  <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <template x-for="a in audiences" :key="a.title">
+      <li class="reveal rounded-3xl border border-line p-6">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-surface"><svg class="icon h-5 w-5" aria-hidden="true"><use :href="'#i-' + a.icon"/></svg></span>
+        <h3 class="mt-4 text-lg font-semibold" x-text="a.title"></h3>
+        <p class="mt-1 text-muted" x-text="a.text"></p>
+      </li>
+    </template>
+  </ul>
+</section>
+
+<!-- ============ EXHIBIT ============ -->
+<section id="exhibit" class="px-5" aria-labelledby="exhibitTitle">
+  <div class="tone-marketplace mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[36px] bg-forest p-8 text-cream sm:p-12 lg:grid-cols-[1.4fr_1fr]">
+    <div>
+      <h2 id="exhibitTitle" class="h2 text-3xl sm:text-4xl">Have something to sell? Get a booth.</h2>
+      <p class="mt-4 max-w-xl text-lg text-cream/75">The Trade Fair &amp; Exhibition is the one space every attendee walks through, whichever programme brought them. Traders, small businesses and brands are welcome.</p>
+      <ul class="mt-6 grid gap-3 text-cream/90">
+        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> A booth in the exhibition space from 11:30 AM to 5:30 PM</li>
+        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> Your business listed in the exhibitor directory</li>
+        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> Every application reviewed, with a reply on WhatsApp</li>
+      </ul>
+      <button type="button" @click="openRegister({ exhibitor: true })" class="btn mt-8 bg-mustard px-6 py-3.5 text-forest hover:brightness-105">Apply for a booth</button>
+    </div>
+    <div class="reveal rounded-3xl bg-paper p-7 text-ink shadow-lift">
+      <p class="text-sm text-muted">Trade Fair open</p>
+      <p class="tnum mt-1 font-display text-4xl font-bold">11:30 – 5:30</p>
+      <p class="mt-5 border-t border-line pt-5 text-sm text-muted">Space is limited and applications are reviewed. Please don't pay anyone until you hear from the official BLOOMCON number.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section id="partners" class="mx-auto max-w-6xl px-5 py-24" aria-labelledby="partnersTitle">
+  <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+    <div>
+      <h2 id="partnersTitle" class="h2 text-3xl sm:text-4xl">Partner with BLOOMCON</h2>
+      <p class="mt-4 text-lg text-muted">Sponsors take a place in the day's story, not a random time slot. A partner positioned before the Bloom Fund stands right where the day's promise pays off.</p>
+      <a href="#contact" class="btn-outline mt-8 px-6 py-3">Request the sponsorship pack</a>
+    </div>
+    <dl class="rounded-3xl border border-line">
+      <template x-for="(tier, i) in partnerTiers" :key="tier.name">
+        <div class="flex flex-col gap-1 p-6 sm:flex-row sm:items-baseline sm:gap-6" :class="i > 0 && 'border-t border-line'"><dt class="w-56 shrink-0 font-semibold" x-text="tier.name"></dt><dd class="text-muted" x-text="tier.text"></dd></div>
+      </template>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="border-t border-line/70 bg-surface" aria-labelledby="faqTitle">
+  <div class="mx-auto max-w-3xl px-5 py-24">
+    <h2 id="faqTitle" class="h2 text-3xl sm:text-4xl">Questions</h2>
+    <div class="mt-10 rounded-3xl border border-line bg-paper">
+      <template x-for="(item, i) in faqs" :key="i">
+        <div :class="i > 0 && 'border-t border-line'">
+          <h3>
+            <button type="button" class="faq-q" @click="toggleFaq(i)" :aria-expanded="faqOpen === i" :aria-controls="'faq-' + i">
+              <span x-text="item.q"></span>
+              <svg class="icon h-5 w-5 shrink-0 text-muted transition-transform duration-300" :class="faqOpen === i && 'rotate-180'" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+            </button>
+          </h3>
+          <div :id="'faq-' + i" class="acc" :class="faqOpen === i && 'open'"><div><p class="px-6 pb-6 text-muted" x-text="item.a"></p></div></div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section id="register" class="mx-auto max-w-6xl px-5 py-24 text-center" aria-labelledby="ctaTitle">
+  <svg class="mx-auto h-24 w-24" role="img" aria-label="BLOOMCON 2.0 logo"><use href="#logo-mark"/></svg>
+  <h2 id="ctaTitle" class="h2 mx-auto mt-8 max-w-2xl text-3xl sm:text-5xl">See you on 14 November</h2>
+  <p class="mx-auto mt-4 max-w-xl text-lg text-muted">Registration takes about four minutes. Choose your programmes and get your ticket straight away.</p>
+  <button type="button" @click="myReg ? openTicket() : openRegister()" class="btn-primary mt-8 px-8 py-4 text-base" x-text="myReg ? 'View my ticket' : 'Register free'">Register free</button>
+</section>
+</main>
+
+<footer id="contact" class="border-t border-line">
+  <div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 text-sm text-muted md:grid-cols-[1.5fr_1fr_1fr]">
+    <div>
+      <p class="flex items-center gap-2.5 text-ink"><svg class="h-8 w-8" aria-hidden="true"><use href="#logo-mark"/></svg><span class="wordmark text-sm">BLOOMCON <span class="text-mustard-deep">2.0</span></span></p>
+      <p class="mt-4 max-w-sm">Organised by BCMG, the Business &amp; Career Ministry Group of The Elevation Church, Greater Lekki, with planning support from Indymand and V Capital Consulting.</p>
+    </div>
+    <div>
+      <h2 class="font-semibold text-ink">Contact</h2>
+      <p class="mt-3">WhatsApp: [WhatsApp number]</p>
+      <p class="mt-1">Email: [Contact email]</p>
+    </div>
+    <div>
+      <h2 class="font-semibold text-ink">Venue</h2>
+      <address class="mt-3 not-italic">The Elevation Church<br>Greater Lekki, Lagos</address>
+    </div>
+  </div>
+  <p class="border-t border-line py-6 text-center text-xs text-muted">© 2026 BLOOMCON. All rights reserved.</p>
+</footer>
+
+<!-- ============ PROGRAMME DETAILS ============ -->
+<!-- One native <dialog> that shows whichever programme was opened -->
+<dialog x-ref="detail" class="detail-dialog" :class="detail && 'tone-' + detail.phase" aria-labelledby="detailTitle" @cancel.prevent="closeDetail()" @click.self="closeDetail()">
+  <div class="detail-panel">
+    <div class="tone-soft relative p-7">
+      <button type="button" @click="closeDetail()" class="icon-btn absolute right-4 top-4 bg-paper/80 hover:bg-paper" aria-label="Close"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <span class="d-stagger tone-text grid h-12 w-12 place-items-center rounded-full bg-paper shadow-lift"><svg class="icon h-6 w-6" aria-hidden="true"><use :href="'#i-' + detail?.icon"/></svg></span>
+      <p class="d-stagger tone-text mt-5 text-sm font-semibold" x-text="phases[detail?.phase] + ' programme'"></p>
+      <h3 id="detailTitle" class="d-stagger mt-1 text-3xl font-bold tracking-tight" x-text="detail?.name"></h3>
+      <p class="d-stagger mt-1 text-lg text-ink/75" x-text="detail?.tagline"></p>
+    </div>
+    <div class="p-7">
+      <p class="d-stagger detail-meta">
+        <span><svg class="icon h-4 w-4 text-muted" aria-hidden="true"><use href="#i-clock"/></svg><span x-text="detail?.time"></span></span>
+        <span><svg class="icon h-4 w-4 text-muted" aria-hidden="true"><use href="#i-map-pin"/></svg><span x-text="detail?.place"></span></span>
+      </p>
+      <h4 class="d-stagger mt-6 font-semibold">What happens</h4>
+      <ul class="detail-list">
+        <template x-for="h in detail?.highlights ?? []" :key="h">
+          <li class="d-stagger" x-text="h"></li>
+        </template>
+      </ul>
+      <p x-show="detail?.note" class="d-stagger detail-note"><svg class="icon mt-0.5 h-4 w-4 shrink-0 text-muted" aria-hidden="true"><use href="#i-info"/></svg><span x-text="detail?.note"></span></p>
+      <button type="button" class="add-btn tone-border tone-text btn d-stagger mt-7 w-full border-[1.5px] px-5 py-3" :aria-pressed="has(detail?.id)" @click="toggle(detail.id, $event)" x-text="has(detail?.id) ? 'Added to my day' : 'Add to my day'"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ SELECTION TRAY ============ -->
+<div x-cloak x-show="selected.length && !regOpen && !myReg"
+     x-transition:enter="transition duration-300 ease-out" x-transition:enter-start="translate-y-24 opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
+     x-transition:leave="transition duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="translate-y-24 opacity-0"
+     class="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+  <div x-ref="tray" class="flex w-full max-w-lg items-center gap-3 rounded-full border border-line bg-paper py-2 pl-5 pr-2 shadow-float">
+    <div class="flex -space-x-1.5" aria-hidden="true">
+      <template x-for="id in selected.slice(0, 4)" :key="id">
+        <span class="tone-bg h-5 w-5 rounded-full ring-2 ring-paper" :class="'tone-' + byId(id).phase"></span>
+      </template>
+    </div>
+    <p class="flex-1 text-sm font-semibold" aria-live="polite"><span class="tnum" x-text="selected.length"></span> <span x-text="selected.length === 1 ? 'programme added' : 'programmes added'"></span></p>
+    <button type="button" @click="openRegister()" class="btn-primary px-5 py-2.5 text-sm shadow-none">Register</button>
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div class="pointer-events-none fixed inset-x-0 top-[76px] z-[95] flex flex-col items-center gap-2 px-4" role="status" aria-live="polite">
+  <template x-for="t in toasts" :key="t.id">
+    <div x-transition class="pointer-events-auto max-w-md rounded-2xl bg-ink px-5 py-3 text-sm text-paper shadow-float" x-text="t.text"></div>
+  </template>
+</div>
+
+<!-- ============ REGISTRATION DRAWER ============ -->
+<div x-cloak x-show="regOpen" class="fixed inset-0 z-[85] flex justify-end" @keydown.escape.window="regOpen && closeRegister()">
+  <div class="absolute inset-0 bg-ink/45 backdrop-blur-[2px]" x-show="regOpen" x-transition.opacity @click="closeRegister()"></div>
+  <div x-show="regOpen" x-trap.inert="regOpen" role="dialog" aria-modal="true" aria-labelledby="regTitle"
+       x-transition:enter="transition duration-500 ease-[cubic-bezier(.2,.8,.2,1)]" x-transition:enter-start="translate-y-full md:translate-y-0 md:translate-x-full" x-transition:enter-end="translate-y-0 md:translate-x-0"
+       x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="translate-y-0 md:translate-x-0" x-transition:leave-end="translate-y-full md:translate-y-0 md:translate-x-full"
+       class="drawer relative flex w-full flex-col bg-paper shadow-float md:max-w-[560px]">
+
+    <div class="flex items-start justify-between gap-4 border-b border-line px-6 pb-4 pt-5">
+      <div>
+        <h2 id="regTitle" class="text-xl font-bold tracking-tight" x-text="done ? 'You’re registered' : (editing ? 'Edit your registration' : 'Register for BLOOMCON 2.0')"></h2>
+        <p x-show="!done" class="mt-1 text-sm text-muted">Free. Takes about four minutes.</p>
+      </div>
+      <button type="button" @click="closeRegister()" class="icon-btn" aria-label="Close registration"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+
+    <!-- Stepper -->
+    <div x-show="!done" class="px-6 pt-5">
+      <ol class="flex items-center gap-2">
+        <template x-for="(s, i) in steps" :key="s">
+          <li class="flex flex-1 flex-col gap-2" :aria-current="i === step ? 'step' : null">
+            <span class="h-1 rounded-full transition-colors duration-500" :class="i <= step ? 'bg-brand' : 'bg-line'"></span>
+            <span class="text-xs font-medium" :class="i === step ? 'text-ink' : 'text-muted'" x-text="(i + 1) + '. ' + stepLabels[s]"></span>
+          </li>
+        </template>
+      </ol>
+    </div>
+
+    <form class="flex-1 overflow-y-auto px-6 py-6" x-ref="regBody" id="regForm" novalidate @submit.prevent="next()">
+
+      <!-- Step: programmes -->
+      <div x-show="!done && current === 'programmes'" class="grid gap-7">
+        <fieldset>
+          <div class="flex items-baseline justify-between">
+            <legend class="font-semibold">Morning in the Main Hall</legend>
+            <button type="button" class="text-sm font-semibold text-salmon-deep" @click="addAllMorning()">Select all</button>
+          </div>
+          <p class="mt-1 text-sm text-muted">Open to everyone. Seats are first come, first served.</p>
+          <div class="mt-3 grid gap-2">
+            <template x-for="p in byPhase('foundation')" :key="p.id">
+              <button type="button" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-pressed="has(p.id)" @click="toggle(p.id, $event, true)">
+                <span class="tick rounded-md"><svg x-show="has(p.id)" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="tnum block text-sm text-muted" x-text="p.time"></span></span>
+              </button>
+            </template>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="font-semibold">Afternoon track</legend>
+          <p class="mt-1 text-sm text-muted">1:00 to 3:30 PM. These run at the same time, so choose one.</p>
+          <div class="mt-3 grid gap-2" role="radiogroup" aria-label="Afternoon track">
+            <template x-for="p in byPhase('pathway')" :key="p.id">
+              <button type="button" role="radio" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-checked="has(p.id)" @click="toggle(p.id, $event, true)">
+                <span class="tick rounded-full"><span x-show="has(p.id)" class="h-2.5 w-2.5 rounded-full bg-paper"></span></span>
+                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="block text-sm text-muted" x-text="p.tagline"></span></span>
+              </button>
+            </template>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="font-semibold">Closing and marketplace</legend>
+          <div class="mt-3 grid gap-2">
+            <template x-for="p in [...byPhase('proof'), ...byPhase('marketplace')]" :key="p.id">
+              <button type="button" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-pressed="has(p.id)" @click="toggle(p.id, $event, true)">
+                <span class="tick rounded-md"><svg x-show="has(p.id)" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="tnum block text-sm text-muted" x-text="p.time"></span></span>
+              </button>
+            </template>
+            <button type="button" class="opt tone-marketplace border-dashed" :class="form.exhibitor && 'on'" :aria-pressed="form.exhibitor" @click="form.exhibitor = !form.exhibitor">
+              <span class="tick rounded-md"><svg x-show="form.exhibitor" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
+              <span class="flex-1"><span class="block font-semibold">Apply for a Trade Fair booth</span><span class="block text-sm text-muted">For traders, small businesses and brands who want to exhibit</span></span>
+            </button>
+          </div>
+        </fieldset>
+        <p x-show="errors.programmes" class="error font-medium" x-text="errors.programmes"></p>
+      </div>
+
+      <!-- Step: details -->
+      <div x-show="!done && current === 'details'" class="grid gap-5">
+        <label class="grid gap-1.5"><span class="label">Full name</span>
+          <input class="field" :class="errors.name && 'bad'" x-model.trim="form.name" name="name" autocomplete="name" placeholder="Adaeze Okafor">
+          <span x-show="errors.name" class="error" x-text="errors.name"></span></label>
+        <label class="grid gap-1.5"><span class="label">Email</span>
+          <input class="field" :class="errors.email && 'bad'" x-model.trim="form.email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+          <span x-show="errors.email" class="error" x-text="errors.email"></span></label>
+        <label class="grid gap-1.5"><span class="label">WhatsApp number</span>
+          <input class="field" :class="errors.phone && 'bad'" x-model.trim="form.phone" name="phone" type="tel" autocomplete="tel" placeholder="0803 000 0000">
+          <span class="text-sm text-muted">We send the final programme and updates here.</span>
+          <span x-show="errors.phone" class="error" x-text="errors.phone"></span></label>
+        <label class="grid gap-1.5"><span class="label">Which best describes you?</span>
+          <select class="field" :class="errors.persona && 'bad'" x-model="form.persona" name="persona">
+            <option value="">Choose one</option>
+            <option>Professional</option>
+            <option>HR leader</option>
+            <option>Executive or manager</option>
+            <option>Entrepreneur or business owner</option>
+            <option>Job seeker</option>
+            <option>Freelancer</option>
+            <option>Student or corps member</option>
+          </select>
+          <span x-show="errors.persona" class="error" x-text="errors.persona"></span></label>
+        <label class="grid gap-1.5"><span class="label">Organisation and role <span class="font-normal text-muted">(optional)</span></span>
+          <input class="field" x-model.trim="form.org" name="organisation" autocomplete="organization-title" placeholder="Head of People, Acme Ltd"></label>
+        <div class="rounded-2xl border border-line p-4">
+          <label class="flex cursor-pointer items-start gap-3">
+            <input type="checkbox" x-model="form.group" class="mt-1 h-5 w-5 accent-forest">
+            <span><span class="block font-semibold">I'm bringing a team of 5 or more</span><span class="block text-sm text-muted">We'll contact you to arrange a group booking.</span></span>
+          </label>
+          <label x-show="form.group" x-transition class="mt-4 grid gap-1.5"><span class="label">Team size</span>
+            <input class="field max-w-[140px]" :class="errors.groupSize && 'bad'" x-model.number="form.groupSize" type="number" min="5" inputmode="numeric" placeholder="5">
+            <span x-show="errors.groupSize" class="error" x-text="errors.groupSize"></span></label>
+        </div>
+      </div>
+
+      <!-- Step: programme questions -->
+      <div x-show="!done && current === 'extra'" class="grid gap-8">
+        <p class="text-muted">A few questions so each team can prepare for you.</p>
+
+        <fieldset x-show="has('jobfest')" class="tone-pathway grid gap-4">
+          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> JobFest &amp; Career Hub</legend>
+          <label class="grid gap-1.5"><span class="label">Field you want to work in</span>
+            <input class="field" :class="errors.jfField && 'bad'" x-model.trim="form.jobfest.field" placeholder="Finance, sales, software, operations…">
+            <span x-show="errors.jfField" class="error" x-text="errors.jfField"></span></label>
+          <label class="grid gap-1.5"><span class="label">Years of work experience</span>
+            <select class="field" :class="errors.jfYears && 'bad'" x-model="form.jobfest.years">
+              <option value="">Choose one</option><option>Graduate or NYSC</option><option>1 to 2 years</option><option>3 to 5 years</option><option>6 to 10 years</option><option>More than 10 years</option>
+            </select>
+            <span x-show="errors.jfYears" class="error" x-text="errors.jfYears"></span></label>
+          <label class="flex items-center gap-3 text-[15px]"><input type="checkbox" x-model="form.jobfest.cv" class="h-5 w-5 accent-forest"> I'll bring printed copies of my CV</label>
+        </fieldset>
+
+        <fieldset x-show="has('globaverse')" class="tone-pathway grid gap-4">
+          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> Globaverse</legend>
+          <label class="grid gap-1.5"><span class="label">How often do you use AI tools today?</span>
+            <select class="field" :class="errors.gvLevel && 'bad'" x-model="form.globaverse.level">
+              <option value="">Choose one</option><option>Never tried one</option><option>Now and then</option><option>Most days at work</option>
+            </select>
+            <span x-show="errors.gvLevel" class="error" x-text="errors.gvLevel"></span></label>
+          <label class="grid gap-1.5"><span class="label">What will you bring to the workshop?</span>
+            <select class="field" x-model="form.globaverse.device"><option>Laptop</option><option>Smartphone</option><option>I don't have a device</option></select></label>
+        </fieldset>
+
+        <fieldset x-show="has('bloomconnect')" class="tone-pathway grid gap-4">
+          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> BloomConnect</legend>
+          <label class="grid gap-1.5"><span class="label">Business name</span>
+            <input class="field" :class="errors.bcName && 'bad'" x-model.trim="form.bloomconnect.business" autocomplete="organization">
+            <span x-show="errors.bcName" class="error" x-text="errors.bcName"></span></label>
+          <label class="grid gap-1.5"><span class="label">Sector</span>
+            <input class="field" :class="errors.bcSector && 'bad'" x-model.trim="form.bloomconnect.sector" placeholder="Food processing, fashion, logistics…">
+            <span x-show="errors.bcSector" class="error" x-text="errors.bcSector"></span></label>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="grid gap-1.5"><span class="label">Registered with CAC?</span>
+              <select class="field" :class="errors.bcCac && 'bad'" x-model="form.bloomconnect.cac"><option value="">Choose one</option><option>Yes</option><option>In progress</option><option>No</option></select>
+              <span x-show="errors.bcCac" class="error" x-text="errors.bcCac"></span></label>
+            <label class="grid gap-1.5"><span class="label">Years in business</span>
+              <select class="field" x-model="form.bloomconnect.age"><option>Less than 1</option><option>1 to 3</option><option>4 to 7</option><option>More than 7</option></select></label>
+          </div>
+          <label class="grid gap-1.5"><span class="label">What would help most?</span>
+            <select class="field" x-model="form.bloomconnect.need"><option>Loan or credit</option><option>Equity investment</option><option>Grant</option><option>Accelerator programme</option><option>Investment readiness advice</option></select></label>
+        </fieldset>
+
+        <fieldset x-show="form.exhibitor" class="tone-marketplace grid gap-4">
+          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> Trade Fair booth</legend>
+          <label class="grid gap-1.5"><span class="label">Business or brand name</span>
+            <input class="field" :class="errors.exName && 'bad'" x-model.trim="form.booth.business">
+            <span x-show="errors.exName" class="error" x-text="errors.exName"></span></label>
+          <label class="grid gap-1.5"><span class="label">What will you sell or show?</span>
+            <textarea class="field min-h-[96px]" :class="errors.exSells && 'bad'" x-model.trim="form.booth.sells"></textarea>
+            <span x-show="errors.exSells" class="error" x-text="errors.exSells"></span></label>
+          <label class="grid gap-1.5"><span class="label">Instagram or website <span class="font-normal text-muted">(optional)</span></span>
+            <input class="field" x-model.trim="form.booth.link" placeholder="@yourbrand"></label>
+        </fieldset>
+      </div>
+
+      <!-- Step: review -->
+      <div x-show="!done && current === 'review'" class="grid gap-6">
+        <div class="rounded-2xl border border-line">
+          <div class="flex items-center justify-between border-b border-line px-5 py-4"><h3 class="font-semibold">Your programmes</h3><button type="button" class="text-sm font-semibold text-salmon-deep" @click="goTo('programmes')">Change</button></div>
+          <ul class="grid gap-3 px-5 py-4">
+            <template x-for="p in selectedPrograms()" :key="p.id">
+              <li class="flex items-center gap-3" :class="'tone-' + p.phase"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span><span class="flex-1 font-medium" x-text="p.name"></span><span class="tnum text-sm text-muted" x-text="p.time"></span></li>
+            </template>
+            <li x-show="form.exhibitor" class="tone-marketplace flex items-center gap-3"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span><span class="flex-1 font-medium">Trade Fair booth application</span></li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-line">
+          <div class="flex items-center justify-between border-b border-line px-5 py-4"><h3 class="font-semibold">Your details</h3><button type="button" class="text-sm font-semibold text-salmon-deep" @click="goTo('details')">Change</button></div>
+          <dl class="grid gap-2 px-5 py-4 text-[15px]">
+            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Name</dt><dd x-text="form.name"></dd></div>
+            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Email</dt><dd class="break-all" x-text="form.email"></dd></div>
+            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">WhatsApp</dt><dd x-text="form.phone"></dd></div>
+            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">I am</dt><dd x-text="form.persona"></dd></div>
+            <div x-show="form.group" class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Team</dt><dd x-text="form.groupSize + ' people'"></dd></div>
+          </dl>
+        </div>
+        <label class="flex items-start gap-3 text-[15px]">
+          <input type="checkbox" x-model="form.consent" class="mt-1 h-5 w-5 accent-forest">
+          <span>BCMG may contact me on WhatsApp and email about BLOOMCON 2.0.</span>
+        </label>
+        <p x-show="errors.consent" class="error -mt-3" x-text="errors.consent"></p>
+        <p x-show="saveError" class="rounded-xl bg-salmon-soft p-3 text-sm" role="alert" x-text="saveError"></p>
+      </div>
+
+      <!-- Done: ticket -->
+      <div x-show="done && myReg" class="grid gap-6">
+        <div x-ref="ticket" class="overflow-hidden rounded-[28px] border border-line shadow-lift">
+          <div class="flex items-center gap-4 bg-forest px-6 py-5 text-cream">
+            <svg class="h-12 w-12" aria-hidden="true"><use href="#logo-mark"/></svg>
+            <div><p class="wordmark">BLOOMCON <span class="text-mustard">2.0</span></p><p class="text-sm text-cream/70">Sat 14 Nov 2026, from 8:30 AM</p></div>
+          </div>
+          <div class="grid grid-cols-[1fr_auto] gap-5 px-6 py-6">
+            <dl class="min-w-0">
+              <dt class="text-sm text-muted">Guest</dt>
+              <dd class="truncate text-xl font-bold" x-text="myReg?.name"></dd>
+              <dt class="mt-3 text-sm text-muted">Ticket</dt>
+              <dd class="tnum text-lg font-semibold tracking-wide" x-text="myReg?.code"></dd>
+              <dt class="mt-3 text-sm text-muted">Venue</dt>
+              <dd class="text-[15px]">The Elevation Church, Greater Lekki, Lagos</dd>
+            </dl>
+            <div class="qr w-[104px] self-start rounded-xl bg-white p-2 ring-1 ring-line" x-html="qrSvg" role="img" aria-label="Ticket QR code"></div>
+          </div>
+          <div class="relative border-t border-dashed border-line px-6 py-5">
+            <span class="absolute -left-3 -top-3 h-6 w-6 rounded-full bg-paper ring-1 ring-line"></span>
+            <span class="absolute -right-3 -top-3 h-6 w-6 rounded-full bg-paper ring-1 ring-line"></span>
+            <ul class="flex flex-wrap gap-2">
+              <template x-for="id in (myReg?.programmes ?? [])" :key="id">
+                <li class="tone-soft inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium" :class="'tone-' + byId(id).phase"><span class="tone-bg h-2 w-2 rounded-full"></span><span x-text="byId(id).name"></span></li>
+              </template>
+              <li x-show="myReg?.exhibitor" class="tone-marketplace tone-soft inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium"><span class="tone-bg h-2 w-2 rounded-full"></span>Booth application</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid gap-2 text-[15px] text-muted">
+          <p>Show this ticket at the entrance. We'll send the final programme to <span class="font-semibold text-ink" x-text="myReg?.phone"></span> on WhatsApp.</p>
+          <p x-show="myReg?.exhibitor">Your booth application is with the Trade Fair team. They'll reply on WhatsApp. Please don't pay anyone until you hear from the official number.</p>
+          <p x-show="!hasBackend" class="rounded-xl bg-mustard-soft p-3 text-sm text-ink">This ticket is saved on this device only. Registrations are not yet being sent to the organisers.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" @click="downloadIcs()" class="btn-outline px-5 py-2.5 text-sm"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-calendar-plus"/></svg> Add to calendar</button>
+          <button type="button" @click="editRegistration()" class="btn-outline px-5 py-2.5 text-sm"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-pencil"/></svg> Edit registration</button>
+          <button type="button" @click="cancelRegistration()" class="btn-ghost px-5 py-2.5 text-sm" x-text="confirmCancel ? 'Tap again to cancel' : 'Cancel registration'"></button>
+        </div>
+      </div>
+    </form>
+
+    <div x-show="!done" class="flex items-center justify-between gap-3 border-t border-line px-6 py-4">
+      <button type="button" @click="back()" x-show="step > 0" class="btn-ghost px-4 py-2.5"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-arrow-left"/></svg> Back</button>
+      <span x-show="step === 0" class="text-sm text-muted"><span class="tnum" x-text="selected.length + (form.exhibitor ? 1 : 0)"></span> selected</span>
+      <button type="submit" form="regForm" :disabled="saving" class="btn-primary px-6 py-3 shadow-none disabled:opacity-60">
+        <svg x-show="saving" class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.6"/></svg>
+        <span x-text="current === 'review' ? (editing ? 'Save changes' : 'Complete registration') : 'Continue'">Continue</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
