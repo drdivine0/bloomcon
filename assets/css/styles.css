@@ -4,6 +4,16 @@
  * this file holds the colour tokens and the few components utilities can't express cleanly.
  */
 
+/* ---------- Fonts (served from assets/fonts; both are variable, so one file covers every weight) ---------- */
+@font-face {
+  font-family: 'Figtree'; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url('../fonts/figtree-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Unbounded'; font-style: normal; font-weight: 500 800; font-display: swap;
+  src: url('../fonts/unbounded-latin.woff2') format('woff2');
+}
+
 /* ---------- Colour tokens ----------
    From the BLOOMCON flower: forest green, cream, salmon, mustard and mint.
    Values are "R G B" so Tailwind can add opacity, e.g. bg-forest/20.

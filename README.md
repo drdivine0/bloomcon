@@ -3,8 +3,9 @@
 Static, public-facing site for BLOOMCON 2.0 (14 November 2026). Plain HTML, CSS and JavaScript:
 no build step and no Node. Edit the files and upload the folder to any web host.
 
-Libraries load from CDNs: Tailwind CSS (utility classes), Alpine.js (interactivity and templates),
-GSAP (animation) and qrcode-generator (ticket QR code).
+Libraries and fonts are kept in the repo and served from the site itself, so no third-party
+server can slow the page down: Tailwind CSS (utility classes), Alpine.js (interactivity and
+templates), GSAP (animation), qrcode-generator (ticket QR code), and the Figtree and Unbounded fonts.
 
 ## Files
 
@@ -15,6 +16,8 @@ assets/js/app.js              Page behaviour: selection, filters, dialog, regist
 assets/js/motion.js           Animations (the page still works if GSAP is blocked or motion is reduced)
 assets/js/tailwind.config.js  Tailwind theme: maps bg-rose, text-muted… to the colour tokens
 assets/css/styles.css         Colour tokens, dark mode and custom components
+assets/vendor/                Library files (Tailwind, Alpine, GSAP, QR code), copied from their official releases
+assets/fonts/                 Figtree and Unbounded, Latin subset, variable weight
 assets/img/                   Flower logo (colour and mono SVG), app icons and the social share image
 ```
 
@@ -53,7 +56,6 @@ browser treats it like the live site. In VS Code the Live Server extension works
 2. **Registrations.** Set `FORM_ENDPOINT` at the top of `assets/js/app.js` to a form service
    that accepts a JSON POST (Formspree, Basin, or your own API). Until it is set, registrations
    stay on the visitor's device and the ticket shows a notice saying so.
-3. **Contact details.** Fill in the WhatsApp number and email in the footer.
 
 ## Adding an icon
 
