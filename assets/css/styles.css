@@ -196,6 +196,8 @@ select.field {
 .tk-intro { position: absolute; inset-inline: 1.25rem; top: calc(44% + 3.5rem); text-align: center; }
 
 /* Colour takeover: six full-screen panels that wipe up in turn */
+/* The story layers are decorative and sit over the lockup, so clicks must pass through them to its buttons */
+.takeover, .tk-intro, .hero-visual { pointer-events: none; }
 .takeover { position: absolute; inset: 0; z-index: 2; }
 .tk-panel { position: absolute; inset: 0; overflow: hidden; color: rgb(var(--forest)); clip-path: inset(100% 0 0 0); }
 /* a big tinted petal grows in the corner, behind the text */
@@ -212,11 +214,6 @@ select.field {
 .hero-final { position: absolute; inset: 0 0 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 1.25rem; text-align: center; }
 .o-slot { position: relative; display: inline-block; width: .8em; height: .8em; margin: 0 .03em; vertical-align: -.02em; }
 .slot-mark { display: block; width: 100%; height: 100%; }
-
-/* Circular "Free entry" sticker */
-.sticker { border-radius: 9999px; transition: transform .3s cubic-bezier(.3, 1.6, .5, 1); }
-.sticker:hover { transform: scale(1.06) rotate(-6deg); }
-.sticker-text { animation: spin 18s linear infinite; }
 
 /* Compact countdown */
 .countdown { display: inline-flex; align-items: baseline; gap: 1px; padding: .35rem .6rem; border-radius: .6rem; background: rgb(var(--cream) / .07); box-shadow: inset 0 0 0 1px rgb(var(--cream) / .1); }
@@ -254,6 +251,6 @@ select.field {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .sticker-text, .marquee-track { animation: none !important; }
+  .marquee-track { animation: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
 }

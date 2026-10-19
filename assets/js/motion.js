@@ -54,7 +54,7 @@
        2. six full-screen colour panels wipe up in turn, one per programme
        3. the last panel lifts away and six petals sweep in to form the flower
        4. the flower spins and lands in the "O" of BLOOMCON, and the lockup appears
-     Scrolling or Skip jumps to step 3; Replay plays it again. */
+     Scrolling or Skip jumps to step 3; Replay plays it again. Returning visitors start at step 3. */
 
   // Centre of an element within the stage, from layout offsets (unaffected by GSAP transforms)
   function centreIn(el, stage) {
@@ -103,7 +103,7 @@
       return { x: to.x - from.x, y: to.y - from.y, scale: slot.offsetWidth / (visual.offsetWidth * 0.69) };
     };
 
-    const STEP = 1.5; // seconds each programme panel holds the screen
+    const STEP = 1.1; // seconds each programme panel holds the screen
     const PANELS_AT = 1; // the intro is a quick beat: the first panel arrives after a second
     const tl = gsap.timeline({
       delay: 0.25,
@@ -161,6 +161,14 @@
       window.scrollTo({ top: 0, behavior: 'instant' }); // otherwise the scroll-to-skip would end it at once
       tl.timeScale(1).restart(true);
     });
+
+    // The full sequence plays once per visitor; on later visits only the ending plays
+    try {
+      if (localStorage.getItem('bloomcon-intro-seen')) skipAhead();
+      localStorage.setItem('bloomcon-intro-seen', '1');
+    } catch {
+      // Storage blocked (e.g. private browsing): just play the full sequence
+    }
 
     // Keep the flower in the "O" if the window changes size after it has landed
     window.addEventListener('resize', () => { if (tl.progress() === 1) gsap.set(visual, dock()); });
