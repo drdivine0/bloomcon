@@ -290,25 +290,8 @@
         <div class="card-inner relative flex h-full flex-col overflow-hidden rounded-[28px] border border-line bg-paper" :class="has(p.id) && 'is-sel'">
           <div class="spot"></div>
           <div class="card-art tone-soft">
-            <svg viewBox="0 0 320 156" aria-hidden="true">
-              <circle class="card-ring" cx="160" cy="78" r="72"/>
-              <g class="f-flower" transform="translate(160 78) scale(.165)">
-                <ellipse class="f-petal f-p1" data-r="0" cx="0" cy="-195" rx="112" ry="194" transform="rotate(0)"/>
-                <ellipse class="f-petal f-p2" data-r="60" cx="0" cy="-195" rx="112" ry="194" transform="rotate(60)"/>
-                <ellipse class="f-petal f-p3" data-r="120" cx="0" cy="-195" rx="112" ry="194" transform="rotate(120)"/>
-                <ellipse class="f-petal f-p1" data-r="180" cx="0" cy="-195" rx="112" ry="194" transform="rotate(180)"/>
-                <ellipse class="f-petal f-p2" data-r="240" cx="0" cy="-195" rx="112" ry="194" transform="rotate(240)"/>
-                <ellipse class="f-petal f-p3" data-r="300" cx="0" cy="-195" rx="112" ry="194" transform="rotate(300)"/>
-                <ellipse class="f-inner" data-r="30" cx="0" cy="-108" rx="52" ry="108" transform="rotate(30)"/>
-                <ellipse class="f-inner" data-r="90" cx="0" cy="-108" rx="52" ry="108" transform="rotate(90)"/>
-                <ellipse class="f-inner" data-r="150" cx="0" cy="-108" rx="52" ry="108" transform="rotate(150)"/>
-                <ellipse class="f-inner" data-r="210" cx="0" cy="-108" rx="52" ry="108" transform="rotate(210)"/>
-                <ellipse class="f-inner" data-r="270" cx="0" cy="-108" rx="52" ry="108" transform="rotate(270)"/>
-                <ellipse class="f-inner" data-r="330" cx="0" cy="-108" rx="52" ry="108" transform="rotate(330)"/>
-                <circle class="f-ring" r="60"/>
-                <circle class="f-core" r="47"/>
-              </g>
-            </svg>
+            <img class="card-photo" :src="photoSrc(p.photo)" :srcset="photoSrcset(p.photo)" sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw" width="800" height="450" alt="" loading="lazy" decoding="async">
+            <span class="card-shade" aria-hidden="true"></span>
             <span class="card-icon tone-text absolute left-5 top-5 z-[2] grid h-11 w-11 place-items-center rounded-full bg-paper shadow-lift"><svg class="icon h-5 w-5" aria-hidden="true"><use :href="'#i-' + p.icon"/></svg></span>
             <span class="sel-badge tone-bg absolute right-5 top-5 z-[2] grid h-8 w-8 place-items-center rounded-full text-paper"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-check"/></svg></span>
           </div>
@@ -334,7 +317,7 @@
     <div class="grid gap-12 lg:grid-cols-[1fr_2fr]">
       <div>
         <h2 id="scheduleTitle" class="h2 text-3xl sm:text-4xl">The day at a glance</h2>
-        <p class="mt-4 text-lg text-muted">Saturday, 14 November 2026. The Main Hall closes at 4:00 PM; the Trade Fair stays open until 5:30 PM.</p>
+        <p class="mt-4 text-lg text-muted">Saturday, 14 November 2026. The Main Hall closes at 4:00 PM; the Trade Fair runs from 9:00 AM to 5:00 PM.</p>
         <p class="mt-4 text-sm text-muted">Times may shift slightly. Registered guests receive the final programme on WhatsApp.</p>
       </div>
       <ol>
@@ -374,29 +357,61 @@
   </ul>
 </section>
 
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="bg-forest py-24 text-cream" aria-labelledby="galleryTitle">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[.22em] text-mustard">Past moments</p>
+      <h2 id="galleryTitle" class="h2 mt-3 text-3xl sm:text-4xl">A room full of people growing together</h2>
+      <p class="mt-4 text-lg text-cream/70">Scenes from past BCMG gatherings at The Elevation Church, Greater Lekki. Select a photo to see it larger.</p>
+    </div>
+    <ul class="gallery mt-12">
+      <template x-for="(g, i) in gallery" :key="g.photo">
+        <li class="gallery-item reveal">
+          <button type="button" class="gallery-btn" @click="openPhoto(i)" :aria-label="'View larger: ' + g.alt">
+            <img :src="photoSrc(g.photo)" :srcset="photoSrcset(g.photo)" sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw" :width="g.w" :height="g.h" :alt="g.alt" loading="lazy" decoding="async">
+          </button>
+        </li>
+      </template>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ EXHIBIT ============ -->
-<section id="exhibit" class="px-5" aria-labelledby="exhibitTitle">
+<section id="exhibit" class="px-5 pt-24" aria-labelledby="exhibitTitle">
   <div class="tone-marketplace mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[36px] bg-forest p-8 text-cream sm:p-12 lg:grid-cols-[1.4fr_1fr]">
     <div>
       <h2 id="exhibitTitle" class="h2 text-3xl sm:text-4xl">Have something to sell? Get a booth.</h2>
       <p class="mt-4 max-w-xl text-lg text-cream/75">The Trade Fair &amp; Exhibition is the one space every attendee walks through, whichever programme brought them. Traders, small businesses and brands are welcome.</p>
       <ul class="mt-6 grid gap-3 text-cream/90">
-        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> A booth in the exhibition space from 11:30 AM to 5:30 PM</li>
+        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> A booth in the exhibition space from 9:00 AM to 5:00 PM</li>
         <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> Your business listed in the exhibitor directory</li>
-        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> Every application reviewed, with a reply on WhatsApp</li>
+        <li class="flex gap-3"><svg class="icon mt-0.5 h-5 w-5 shrink-0 text-mustard" aria-hidden="true"><use href="#i-circle-check"/></svg> Booths from ₦50,000, confirmed by the Trade Fair team on WhatsApp</li>
       </ul>
       <button type="button" @click="openRegister({ exhibitor: true })" class="btn mt-8 bg-mustard px-6 py-3.5 text-forest hover:brightness-105">Apply for a booth</button>
     </div>
-    <div class="reveal rounded-3xl bg-paper p-7 text-ink shadow-lift">
-      <p class="text-sm text-muted">Trade Fair open</p>
-      <p class="tnum mt-1 font-display text-4xl font-bold">11:30 – 5:30</p>
-      <p class="mt-5 border-t border-line pt-5 text-sm text-muted">Space is limited and applications are reviewed. Please don't pay anyone until you hear from the official BLOOMCON number.</p>
+    <div class="reveal overflow-hidden rounded-3xl bg-paper text-ink shadow-lift">
+      <img class="h-40 w-full object-cover" src="assets/img/gallery/crowd-in-the-hall-800.webp" width="800" height="450" alt="A packed hall of attendees at a past BCMG gathering" loading="lazy" decoding="async">
+      <div class="p-7">
+        <p class="text-sm text-muted">Trade Fair open</p>
+        <p class="tnum mt-1 font-display text-4xl font-bold">9:00 – 5:00</p>
+        <p class="mt-5 border-t border-line pt-5 text-sm text-muted">Booths start from ₦50,000 and space is limited. For booth enquiries, email <a href="mailto:bizncareershubgl@gmail.com" class="font-semibold text-ink underline-offset-2 hover:underline">bizncareershubgl@gmail.com</a>.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ PARTNERS ============ -->
 <section id="partners" class="mx-auto max-w-6xl px-5 py-24" aria-labelledby="partnersTitle">
+  <div class="mb-20 text-center">
+    <h2 class="text-xs font-semibold uppercase tracking-[.22em] text-muted">Steering partners</h2>
+    <ul class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <li class="partner-logo reveal"><img src="assets/img/partners/bcmg.webp" width="488" height="216" alt="BCMG, Business &amp; Career Ministry Group" loading="lazy" decoding="async"></li>
+      <li class="partner-logo reveal"><img src="assets/img/partners/lifepointe-greater-lekki.webp" width="369" height="136" alt="lifePointe Greater Lekki" loading="lazy" decoding="async"></li>
+      <li class="partner-logo reveal"><img src="assets/img/partners/elevation-greater-lekki.webp" width="226" height="260" alt="The Elevation Church, Greater Lekki" loading="lazy" decoding="async"></li>
+      <li class="partner-logo reveal"><img src="assets/img/partners/elevation-ibeju-lekki.webp" width="303" height="245" alt="The Elevation Church, Ibeju-Lekki" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
   <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
     <div>
       <h2 id="partnersTitle" class="h2 text-3xl sm:text-4xl">Partner with BLOOMCON</h2>
@@ -428,15 +443,23 @@
         </div>
       </template>
     </div>
+    <p class="mt-8 text-center text-muted">For more info, email <a href="mailto:bizncareershubgl@gmail.com" class="font-semibold text-ink underline-offset-2 hover:underline">bizncareershubgl@gmail.com</a></p>
   </div>
 </section>
 
 <!-- ============ CLOSING CTA ============ -->
-<section id="register" class="mx-auto max-w-6xl px-5 py-24 text-center" aria-labelledby="ctaTitle">
-  <svg class="mx-auto h-24 w-24" role="img" aria-label="BLOOMCON 2.0 logo"><use href="#logo-mark"/></svg>
-  <h2 id="ctaTitle" class="h2 mx-auto mt-8 max-w-2xl text-3xl sm:text-5xl">See you on 14 November</h2>
-  <p class="mx-auto mt-4 max-w-xl text-lg text-muted">Registration takes about four minutes. Choose your programmes and get your ticket straight away.</p>
-  <button type="button" @click="myReg ? openTicket() : openRegister()" class="btn-primary mt-8 px-8 py-4 text-base" x-text="myReg ? 'View my ticket' : 'Register free'">Register free</button>
+<section id="register" class="px-5 py-24" aria-labelledby="ctaTitle">
+  <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[36px] px-6 py-20 text-center text-cream sm:py-24">
+    <img class="absolute inset-0 h-full w-full object-cover" src="assets/img/gallery/ascend-cohort-1600.webp" srcset="assets/img/gallery/ascend-cohort-800.webp 800w, assets/img/gallery/ascend-cohort-1600.webp 1600w" sizes="(min-width: 1200px) 1152px, 100vw" width="1600" height="900" alt="" loading="lazy" decoding="async">
+    <span class="absolute inset-0 bg-forest/80" aria-hidden="true"></span>
+    <div class="relative">
+      <svg class="mx-auto h-20 w-20" role="img" aria-label="BLOOMCON 2.0 logo"><use href="#logo-mark"/></svg>
+      <h2 id="ctaTitle" class="h2 mx-auto mt-6 max-w-2xl text-3xl sm:text-5xl">See you on 14 November</h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-cream/80">Entry is free, but registration is required. It takes about three minutes.</p>
+      <button type="button" @click="myReg ? openTicket() : openRegister()" class="btn mt-8 bg-cream px-8 py-4 text-base text-forest hover:bg-white" x-text="myReg ? 'View my ticket' : 'Register free'">Register free</button>
+      <p class="mt-6 text-sm text-cream/70">For more info, email <a href="mailto:bizncareershubgl@gmail.com" class="font-semibold text-cream underline-offset-2 hover:underline">bizncareershubgl@gmail.com</a></p>
+    </div>
+  </div>
 </section>
 </main>
 
@@ -463,8 +486,12 @@
 <!-- One native <dialog> that shows whichever programme was opened -->
 <dialog x-ref="detail" class="detail-dialog" :class="detail && 'tone-' + detail.phase" aria-labelledby="detailTitle" @cancel.prevent="closeDetail()" @click.self="closeDetail()">
   <div class="detail-panel">
-    <div class="tone-soft relative p-7">
-      <button type="button" @click="closeDetail()" class="icon-btn absolute right-4 top-4 bg-paper/80 hover:bg-paper" aria-label="Close"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+    <div class="relative h-48 overflow-hidden sm:h-56">
+      <img class="h-full w-full object-cover object-[50%_25%]" :src="detail && photoSrc(detail.photo, 1600)" alt="" decoding="async">
+      <span class="detail-shade" aria-hidden="true"></span>
+      <button type="button" @click="closeDetail()" class="icon-btn absolute right-4 top-4 bg-paper/85 hover:bg-paper" aria-label="Close"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="tone-soft relative -mt-px p-7">
       <span class="d-stagger tone-text grid h-12 w-12 place-items-center rounded-full bg-paper shadow-lift"><svg class="icon h-6 w-6" aria-hidden="true"><use :href="'#i-' + detail?.icon"/></svg></span>
       <p class="d-stagger tone-text mt-5 text-sm font-semibold" x-text="phases[detail?.phase] + ' programme'"></p>
       <h3 id="detailTitle" class="d-stagger mt-1 text-3xl font-bold tracking-tight" x-text="detail?.name"></h3>
@@ -485,6 +512,21 @@
       <button type="button" class="add-btn tone-border tone-text btn d-stagger mt-7 w-full border-[1.5px] px-5 py-3" :aria-pressed="has(detail?.id)" @click="toggle(detail.id, $event)" x-text="has(detail?.id) ? 'Added to my day' : 'Add to my day'"></button>
     </div>
   </div>
+</dialog>
+
+<!-- ============ PHOTO VIEWER ============ -->
+<dialog x-ref="lightbox" class="lightbox" aria-label="Photo viewer" @cancel.prevent="closePhoto()" @click.self="closePhoto()"
+        @keydown.arrow-right="stepPhoto(1)" @keydown.arrow-left="stepPhoto(-1)">
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" :src="photo && photoSrc(photo.photo, 1600)" :alt="photo?.alt ?? ''">
+    <figcaption class="mt-3 flex items-center justify-between gap-4 text-sm text-cream/80">
+      <span x-text="photo?.alt"></span>
+      <span class="tnum shrink-0" x-text="photoIndex !== null ? (photoIndex + 1) + ' / ' + gallery.length : ''"></span>
+    </figcaption>
+  </figure>
+  <button type="button" @click="closePhoto()" class="lightbox-btn right-4 top-4" aria-label="Close photo"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <button type="button" @click="stepPhoto(-1)" class="lightbox-btn left-4 top-1/2 -translate-y-1/2" aria-label="Previous photo"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+  <button type="button" @click="stepPhoto(1)" class="lightbox-btn right-4 top-1/2 -translate-y-1/2" aria-label="Next photo"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
 </dialog>
 
 <!-- ============ SELECTION TRAY ============ -->
@@ -520,8 +562,8 @@
 
     <div class="flex items-start justify-between gap-4 border-b border-line px-6 pb-4 pt-5">
       <div>
-        <h2 id="regTitle" class="text-xl font-bold tracking-tight" x-text="done ? 'You’re registered' : (editing ? 'Edit your registration' : 'Register for BLOOMCON 2.0')"></h2>
-        <p x-show="!done" class="mt-1 text-sm text-muted">Free. Takes about four minutes.</p>
+        <h2 id="regTitle" class="text-xl font-bold tracking-tight" x-text="done ? 'You’re registered' : 'Register for BLOOMCON 2.0'"></h2>
+        <p x-show="!done" class="mt-1 text-sm text-muted">Free entry, but registration is required. Takes about three minutes.</p>
       </div>
       <button type="button" @click="closeRegister()" class="icon-btn" aria-label="Close registration"><svg class="icon h-5 w-5" aria-hidden="true"><use href="#i-x"/></svg></button>
     </div>
@@ -538,180 +580,175 @@
       </ol>
     </div>
 
+    <!-- The questions mirror the BLOOMCON 2.0 Google Form; answers are sent to it (app.js) -->
     <form class="flex-1 overflow-y-auto px-6 py-6" x-ref="regBody" id="regForm" novalidate @submit.prevent="next()">
 
-      <!-- Step: programmes -->
-      <div x-show="!done && current === 'programmes'" class="grid gap-7">
-        <fieldset>
-          <div class="flex items-baseline justify-between">
-            <legend class="font-semibold">Morning in the Main Hall</legend>
-            <button type="button" class="text-sm font-semibold text-salmon-deep" @click="addAllMorning()">Select all</button>
-          </div>
-          <p class="mt-1 text-sm text-muted">Open to everyone. Seats are first come, first served.</p>
-          <div class="mt-3 grid gap-2">
-            <template x-for="p in byPhase('foundation')" :key="p.id">
-              <button type="button" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-pressed="has(p.id)" @click="toggle(p.id, $event, true)">
-                <span class="tick rounded-md"><svg x-show="has(p.id)" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
-                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="tnum block text-sm text-muted" x-text="p.time"></span></span>
-              </button>
-            </template>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend class="font-semibold">Afternoon track</legend>
-          <p class="mt-1 text-sm text-muted">1:00 to 3:30 PM. These run at the same time, so choose one.</p>
-          <div class="mt-3 grid gap-2" role="radiogroup" aria-label="Afternoon track">
-            <template x-for="p in byPhase('pathway')" :key="p.id">
-              <button type="button" role="radio" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-checked="has(p.id)" @click="toggle(p.id, $event, true)">
-                <span class="tick rounded-full"><span x-show="has(p.id)" class="h-2.5 w-2.5 rounded-full bg-paper"></span></span>
-                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="block text-sm text-muted" x-text="p.tagline"></span></span>
-              </button>
-            </template>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend class="font-semibold">Closing and marketplace</legend>
-          <div class="mt-3 grid gap-2">
-            <template x-for="p in [...byPhase('proof'), ...byPhase('marketplace')]" :key="p.id">
-              <button type="button" class="opt" :class="['tone-' + p.phase, has(p.id) && 'on']" :aria-pressed="has(p.id)" @click="toggle(p.id, $event, true)">
-                <span class="tick rounded-md"><svg x-show="has(p.id)" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
-                <span class="flex-1"><span class="block font-semibold" x-text="p.name"></span><span class="tnum block text-sm text-muted" x-text="p.time"></span></span>
-              </button>
-            </template>
-            <button type="button" class="opt tone-marketplace border-dashed" :class="form.exhibitor && 'on'" :aria-pressed="form.exhibitor" @click="form.exhibitor = !form.exhibitor">
-              <span class="tick rounded-md"><svg x-show="form.exhibitor" class="icon h-4 w-4 [stroke-width:3]" aria-hidden="true"><use href="#i-check"/></svg></span>
-              <span class="flex-1"><span class="block font-semibold">Apply for a Trade Fair booth</span><span class="block text-sm text-muted">For traders, small businesses and brands who want to exhibit</span></span>
-            </button>
-          </div>
-        </fieldset>
-        <p x-show="errors.programmes" class="error font-medium" x-text="errors.programmes"></p>
-      </div>
-
-      <!-- Step: details -->
-      <div x-show="!done && current === 'details'" class="grid gap-5">
-        <label class="grid gap-1.5"><span class="label">Full name</span>
-          <input class="field" :class="errors.name && 'bad'" x-model.trim="form.name" name="name" autocomplete="name" placeholder="Adaeze Okafor">
+      <!-- Step: about you -->
+      <div x-show="!done && current === 'about'" class="grid gap-5">
+        <label class="grid gap-1.5"><span class="label">Full name <span class="req">*</span></span>
+          <input class="field" :class="errors.name && 'bad'" x-model="form.name" name="name" autocomplete="name" placeholder="Adaeze Okafor">
           <span x-show="errors.name" class="error" x-text="errors.name"></span></label>
-        <label class="grid gap-1.5"><span class="label">Email</span>
+        <label class="grid gap-1.5"><span class="label">Email address <span class="req">*</span></span>
           <input class="field" :class="errors.email && 'bad'" x-model.trim="form.email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
           <span x-show="errors.email" class="error" x-text="errors.email"></span></label>
-        <label class="grid gap-1.5"><span class="label">WhatsApp number</span>
+        <label class="grid gap-1.5"><span class="label">Phone number (WhatsApp preferred) <span class="req">*</span></span>
           <input class="field" :class="errors.phone && 'bad'" x-model.trim="form.phone" name="phone" type="tel" autocomplete="tel" placeholder="0803 000 0000">
-          <span class="text-sm text-muted">We send the final programme and updates here.</span>
+          <span class="text-sm text-muted">We will send your event-day updates here.</span>
           <span x-show="errors.phone" class="error" x-text="errors.phone"></span></label>
-        <label class="grid gap-1.5"><span class="label">Which best describes you?</span>
-          <select class="field" :class="errors.persona && 'bad'" x-model="form.persona" name="persona">
-            <option value="">Choose one</option>
-            <option>Professional</option>
-            <option>HR leader</option>
-            <option>Executive or manager</option>
-            <option>Entrepreneur or business owner</option>
-            <option>Job seeker</option>
-            <option>Freelancer</option>
-            <option>Student or corps member</option>
-          </select>
-          <span x-show="errors.persona" class="error" x-text="errors.persona"></span></label>
-        <label class="grid gap-1.5"><span class="label">Organisation and role <span class="font-normal text-muted">(optional)</span></span>
-          <input class="field" x-model.trim="form.org" name="organisation" autocomplete="organization-title" placeholder="Head of People, Acme Ltd"></label>
-        <div class="rounded-2xl border border-line p-4">
-          <label class="flex cursor-pointer items-start gap-3">
-            <input type="checkbox" x-model="form.group" class="mt-1 h-5 w-5 accent-forest">
-            <span><span class="block font-semibold">I'm bringing a team of 5 or more</span><span class="block text-sm text-muted">We'll contact you to arrange a group booking.</span></span>
-          </label>
-          <label x-show="form.group" x-transition class="mt-4 grid gap-1.5"><span class="label">Team size</span>
-            <input class="field max-w-[140px]" :class="errors.groupSize && 'bad'" x-model.number="form.groupSize" type="number" min="5" inputmode="numeric" placeholder="5">
-            <span x-show="errors.groupSize" class="error" x-text="errors.groupSize"></span></label>
-        </div>
-      </div>
 
-      <!-- Step: programme questions -->
-      <div x-show="!done && current === 'extra'" class="grid gap-8">
-        <p class="text-muted">A few questions so each team can prepare for you.</p>
-
-        <fieldset x-show="has('jobfest')" class="tone-pathway grid gap-4">
-          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> JobFest &amp; Career Hub</legend>
-          <label class="grid gap-1.5"><span class="label">Field you want to work in</span>
-            <input class="field" :class="errors.jfField && 'bad'" x-model.trim="form.jobfest.field" placeholder="Finance, sales, software, operations…">
-            <span x-show="errors.jfField" class="error" x-text="errors.jfField"></span></label>
-          <label class="grid gap-1.5"><span class="label">Years of work experience</span>
-            <select class="field" :class="errors.jfYears && 'bad'" x-model="form.jobfest.years">
-              <option value="">Choose one</option><option>Graduate or NYSC</option><option>1 to 2 years</option><option>3 to 5 years</option><option>6 to 10 years</option><option>More than 10 years</option>
-            </select>
-            <span x-show="errors.jfYears" class="error" x-text="errors.jfYears"></span></label>
-          <label class="flex items-center gap-3 text-[15px]"><input type="checkbox" x-model="form.jobfest.cv" class="h-5 w-5 accent-forest"> I'll bring printed copies of my CV</label>
-        </fieldset>
-
-        <fieldset x-show="has('globaverse')" class="tone-pathway grid gap-4">
-          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> Globaverse</legend>
-          <label class="grid gap-1.5"><span class="label">How often do you use AI tools today?</span>
-            <select class="field" :class="errors.gvLevel && 'bad'" x-model="form.globaverse.level">
-              <option value="">Choose one</option><option>Never tried one</option><option>Now and then</option><option>Most days at work</option>
-            </select>
-            <span x-show="errors.gvLevel" class="error" x-text="errors.gvLevel"></span></label>
-          <label class="grid gap-1.5"><span class="label">What will you bring to the workshop?</span>
-            <select class="field" x-model="form.globaverse.device"><option>Laptop</option><option>Smartphone</option><option>I don't have a device</option></select></label>
-        </fieldset>
-
-        <fieldset x-show="has('bloomconnect')" class="tone-pathway grid gap-4">
-          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> BloomConnect</legend>
-          <label class="grid gap-1.5"><span class="label">Business name</span>
-            <input class="field" :class="errors.bcName && 'bad'" x-model.trim="form.bloomconnect.business" autocomplete="organization">
-            <span x-show="errors.bcName" class="error" x-text="errors.bcName"></span></label>
-          <label class="grid gap-1.5"><span class="label">Sector</span>
-            <input class="field" :class="errors.bcSector && 'bad'" x-model.trim="form.bloomconnect.sector" placeholder="Food processing, fashion, logistics…">
-            <span x-show="errors.bcSector" class="error" x-text="errors.bcSector"></span></label>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <label class="grid gap-1.5"><span class="label">Registered with CAC?</span>
-              <select class="field" :class="errors.bcCac && 'bad'" x-model="form.bloomconnect.cac"><option value="">Choose one</option><option>Yes</option><option>In progress</option><option>No</option></select>
-              <span x-show="errors.bcCac" class="error" x-text="errors.bcCac"></span></label>
-            <label class="grid gap-1.5"><span class="label">Years in business</span>
-              <select class="field" x-model="form.bloomconnect.age"><option>Less than 1</option><option>1 to 3</option><option>4 to 7</option><option>More than 7</option></select></label>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Gender <span class="font-normal text-muted">(optional)</span></legend>
+          <div class="choices">
+            <template x-for="o in reg.genders" :key="o"><label class="choice"><input type="radio" name="gender" :value="o" x-model="form.gender"><span x-text="o"></span></label></template>
           </div>
-          <label class="grid gap-1.5"><span class="label">What would help most?</span>
-            <select class="field" x-model="form.bloomconnect.need"><option>Loan or credit</option><option>Equity investment</option><option>Grant</option><option>Accelerator programme</option><option>Investment readiness advice</option></select></label>
         </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Age range <span class="req">*</span></legend>
+          <div class="choices" :aria-invalid="!!errors.age">
+            <template x-for="o in reg.ageRanges" :key="o"><label class="choice"><input type="radio" name="age" :value="o" x-model="form.age"><span x-text="o"></span></label></template>
+          </div>
+          <span x-show="errors.age" class="error" x-text="errors.age"></span>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Which best describes you? <span class="req">*</span></legend>
+          <div class="choices choices-list" :aria-invalid="!!errors.persona">
+            <template x-for="o in reg.personas" :key="o"><label class="choice"><input type="radio" name="persona" :value="o" x-model="form.persona"><span x-text="o"></span></label></template>
+          </div>
+          <span x-show="errors.persona" class="error" x-text="errors.persona"></span>
+        </fieldset>
+        <label class="grid gap-1.5"><span class="label">Organisation and job title (if any) <span class="req">*</span></span>
+          <input class="field" :class="errors.org && 'bad'" x-model="form.org" name="organisation" autocomplete="organization-title" placeholder="e.g. Operations Manager, ABC Ltd">
+          <span x-show="errors.org" class="error" x-text="errors.org"></span></label>
+      </div>
 
-        <fieldset x-show="form.exhibitor" class="tone-marketplace grid gap-4">
-          <legend class="mb-4 flex items-center gap-2 font-semibold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> Trade Fair booth</legend>
-          <label class="grid gap-1.5"><span class="label">Business or brand name</span>
-            <input class="field" :class="errors.exName && 'bad'" x-model.trim="form.booth.business">
-            <span x-show="errors.exName" class="error" x-text="errors.exName"></span></label>
-          <label class="grid gap-1.5"><span class="label">What will you sell or show?</span>
-            <textarea class="field min-h-[96px]" :class="errors.exSells && 'bad'" x-model.trim="form.booth.sells"></textarea>
-            <span x-show="errors.exSells" class="error" x-text="errors.exSells"></span></label>
-          <label class="grid gap-1.5"><span class="label">Instagram or website <span class="font-normal text-muted">(optional)</span></span>
-            <input class="field" x-model.trim="form.booth.link" placeholder="@yourbrand"></label>
+      <!-- Step: plan your day -->
+      <div x-show="!done && current === 'day'" class="grid gap-7">
+        <fieldset class="grid gap-2">
+          <legend class="label mb-1">Which morning sessions will you attend? <span class="req">*</span></legend>
+          <p class="mb-2 text-sm text-muted">Bloom Stage (8:30 AM) opens the day for everyone in the Main Hall.</p>
+          <div class="choices choices-list" :aria-invalid="!!errors.morning">
+            <template x-for="o in reg.morning" :key="o.value"><label class="choice"><input type="checkbox" name="morning" :value="o.value" x-model="form.morning"><span x-text="o.value"></span></label></template>
+          </div>
+          <span x-show="errors.morning" class="error" x-text="errors.morning"></span>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-1">Which afternoon track will you join? (1:30–3:30 PM) <span class="req">*</span></legend>
+          <p class="mb-2 text-sm text-muted">Globaverse and BloomConnect have about 150 seats each, first come, first served.</p>
+          <div class="choices choices-list" :aria-invalid="!!errors.afternoon">
+            <template x-for="o in reg.afternoon" :key="o.value"><label class="choice"><input type="radio" name="afternoon" :value="o.value" x-model="form.afternoon"><span x-text="o.value"></span></label></template>
+          </div>
+          <span x-show="errors.afternoon" class="error" x-text="errors.afternoon"></span>
         </fieldset>
       </div>
 
-      <!-- Step: review -->
-      <div x-show="!done && current === 'review'" class="grid gap-6">
-        <div class="rounded-2xl border border-line">
-          <div class="flex items-center justify-between border-b border-line px-5 py-4"><h3 class="font-semibold">Your programmes</h3><button type="button" class="text-sm font-semibold text-salmon-deep" @click="goTo('programmes')">Change</button></div>
-          <ul class="grid gap-3 px-5 py-4">
-            <template x-for="p in selectedPrograms()" :key="p.id">
-              <li class="flex items-center gap-3" :class="'tone-' + p.phase"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span><span class="flex-1 font-medium" x-text="p.name"></span><span class="tnum text-sm text-muted" x-text="p.time"></span></li>
-            </template>
-            <li x-show="form.exhibitor" class="tone-marketplace flex items-center gap-3"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span><span class="flex-1 font-medium">Trade Fair booth application</span></li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-line">
-          <div class="flex items-center justify-between border-b border-line px-5 py-4"><h3 class="font-semibold">Your details</h3><button type="button" class="text-sm font-semibold text-salmon-deep" @click="goTo('details')">Change</button></div>
-          <dl class="grid gap-2 px-5 py-4 text-[15px]">
-            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Name</dt><dd x-text="form.name"></dd></div>
-            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Email</dt><dd class="break-all" x-text="form.email"></dd></div>
-            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">WhatsApp</dt><dd x-text="form.phone"></dd></div>
-            <div class="flex gap-3"><dt class="w-28 shrink-0 text-muted">I am</dt><dd x-text="form.persona"></dd></div>
-            <div x-show="form.group" class="flex gap-3"><dt class="w-28 shrink-0 text-muted">Team</dt><dd x-text="form.groupSize + ' people'"></dd></div>
-          </dl>
-        </div>
-        <label class="flex items-start gap-3 text-[15px]">
-          <input type="checkbox" x-model="form.consent" class="mt-1 h-5 w-5 accent-forest">
-          <span>BCMG may contact me on WhatsApp and email about BLOOMCON 2.0.</span>
-        </label>
-        <p x-show="errors.consent" class="error -mt-3" x-text="errors.consent"></p>
+      <!-- Step: questions for the chosen track -->
+      <div x-show="!done && current === 'track'" class="grid gap-7">
+        <template x-if="trackProgram === 'jobfest'">
+          <div class="tone-pathway grid gap-6">
+            <p class="flex items-center gap-2 font-display text-lg font-bold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> JobFest — Get a Job. Build a Career.</p>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">Your current situation <span class="req">*</span></legend>
+              <div class="choices choices-list"><template x-for="o in reg.jobfest.situations" :key="o"><label class="choice"><input type="radio" name="jfSituation" :value="o" x-model="form.jobfest.situation"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.jfSituation" class="error" x-text="errors.jfSituation"></span>
+            </fieldset>
+            <label class="grid gap-1.5"><span class="label">Field you are looking for work in <span class="req">*</span></span>
+              <select class="field" :class="errors.jfField && 'bad'" x-model="form.jobfest.field">
+                <option value="">Choose one</option>
+                <template x-for="o in reg.jobfest.fields" :key="o"><option :value="o" x-text="o"></option></template>
+              </select>
+              <span x-show="errors.jfField" class="error" x-text="errors.jfField"></span></label>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">Years of work experience <span class="req">*</span></legend>
+              <div class="choices"><template x-for="o in reg.jobfest.experience" :key="o"><label class="choice"><input type="radio" name="jfExperience" :value="o" x-model="form.jobfest.experience"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.jfExperience" class="error" x-text="errors.jfExperience"></span>
+            </fieldset>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">Highest qualification <span class="req">*</span></legend>
+              <div class="choices"><template x-for="o in reg.jobfest.qualifications" :key="o"><label class="choice"><input type="radio" name="jfQualification" :value="o" x-model="form.jobfest.qualification"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.jfQualification" class="error" x-text="errors.jfQualification"></span>
+            </fieldset>
+            <label class="grid gap-1.5"><span class="label">Link to your CV or LinkedIn profile <span class="font-normal text-muted">(optional)</span></span>
+              <input class="field" x-model.trim="form.jobfest.cv" type="url" inputmode="url" placeholder="Google Drive, Dropbox or LinkedIn link">
+              <span class="text-sm text-muted">It helps recruiters prepare.</span></label>
+          </div>
+        </template>
+
+        <template x-if="trackProgram === 'globaverse'">
+          <div class="tone-pathway grid gap-6">
+            <p class="flex items-center gap-2 font-display text-lg font-bold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> Globaverse — Winning in the Age of AI</p>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">How often do you use AI tools (ChatGPT, Claude, Gemini, etc.)? <span class="req">*</span></legend>
+              <div class="choices"><template x-for="o in reg.globaverse.usage" :key="o"><label class="choice"><input type="radio" name="gvUsage" :value="o" x-model="form.globaverse.usage"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.gvUsage" class="error" x-text="errors.gvUsage"></span>
+            </fieldset>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">Will you bring a device for the hands-on workshop? <span class="req">*</span></legend>
+              <div class="choices"><template x-for="o in reg.globaverse.devices" :key="o"><label class="choice"><input type="radio" name="gvDevice" :value="o" x-model="form.globaverse.device"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.gvDevice" class="error" x-text="errors.gvDevice"></span>
+            </fieldset>
+            <label class="grid gap-1.5"><span class="label">What would you most likely use AI for? <span class="req">*</span></span>
+              <textarea class="field min-h-[96px]" :class="errors.gvUseFor && 'bad'" x-model="form.globaverse.useFor" placeholder="e.g. getting freelance clients, writing proposals, automating my work"></textarea>
+              <span x-show="errors.gvUseFor" class="error" x-text="errors.gvUseFor"></span></label>
+          </div>
+        </template>
+
+        <template x-if="trackProgram === 'bloomconnect'">
+          <div class="tone-pathway grid gap-6">
+            <p class="flex items-center gap-2 font-display text-lg font-bold"><span class="tone-bg h-2.5 w-2.5 rounded-full"></span> BloomConnect — Market. Connect. Fund.</p>
+            <label class="grid gap-1.5"><span class="label">Business name <span class="req">*</span></span>
+              <input class="field" :class="errors.bcBusiness && 'bad'" x-model="form.bloomconnect.business" autocomplete="organization">
+              <span x-show="errors.bcBusiness" class="error" x-text="errors.bcBusiness"></span></label>
+            <label class="grid gap-1.5"><span class="label">Business sector <span class="req">*</span></span>
+              <select class="field" :class="errors.bcSector && 'bad'" x-model="form.bloomconnect.sector">
+                <option value="">Choose one</option>
+                <template x-for="o in reg.bloomconnect.sectors" :key="o"><option :value="o" x-text="o"></option></template>
+              </select>
+              <span x-show="errors.bcSector" class="error" x-text="errors.bcSector"></span></label>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">How long has your business been running? <span class="req">*</span></legend>
+              <div class="choices"><template x-for="o in reg.bloomconnect.ages" :key="o"><label class="choice"><input type="radio" name="bcAge" :value="o" x-model="form.bloomconnect.age"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.bcAge" class="error" x-text="errors.bcAge"></span>
+            </fieldset>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-2">What support are you looking for? <span class="req">*</span></legend>
+              <div class="choices choices-list"><template x-for="o in reg.bloomconnect.support" :key="o"><label class="choice"><input type="checkbox" name="bcSupport" :value="o" x-model="form.bloomconnect.support"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.bcSupport" class="error" x-text="errors.bcSupport"></span>
+            </fieldset>
+            <fieldset class="grid gap-2">
+              <legend class="label mb-1">Would you like a 1-to-1 office-hours slot? <span class="req">*</span></legend>
+              <p class="mb-2 text-sm text-muted">Slots are limited; we will confirm by WhatsApp before the event.</p>
+              <div class="choices choices-list"><template x-for="o in reg.bloomconnect.officeHours" :key="o"><label class="choice"><input type="radio" name="bcOfficeHours" :value="o" x-model="form.bloomconnect.officeHours"><span x-text="o"></span></label></template></div>
+              <span x-show="errors.bcOfficeHours" class="error" x-text="errors.bcOfficeHours"></span>
+            </fieldset>
+          </div>
+        </template>
+      </div>
+
+      <!-- Step: almost done -->
+      <div x-show="!done && current === 'finish'" class="grid gap-7">
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">How did you hear about BLOOMCON 2.0? <span class="req">*</span></legend>
+          <div class="choices" :aria-invalid="!!errors.heardFrom"><template x-for="o in reg.heardFrom" :key="o"><label class="choice"><input type="radio" name="heardFrom" :value="o" x-model="form.heardFrom"><span x-text="o"></span></label></template></div>
+          <span x-show="errors.heardFrom" class="error" x-text="errors.heardFrom"></span>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Are you a member of The Elevation Church? <span class="font-normal text-muted">(optional)</span></legend>
+          <div class="choices"><template x-for="o in reg.member" :key="o"><label class="choice"><input type="radio" name="member" :value="o" x-model="form.member"><span x-text="o"></span></label></template></div>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-1">Would you like to exhibit or sell at the Trade Fair &amp; Exhibition? <span class="font-normal text-muted">(optional)</span></legend>
+          <p class="mb-2 text-sm text-muted">Booths start from ₦50,000.</p>
+          <div class="choices"><template x-for="o in reg.exhibit" :key="o"><label class="choice"><input type="radio" name="exhibit" :value="o" x-model="form.exhibit"><span x-text="o"></span></label></template></div>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Stay in the loop <span class="font-normal text-muted">(optional)</span></legend>
+          <div class="choices choices-list"><template x-for="o in reg.updates" :key="o"><label class="choice"><input type="checkbox" name="updates" :value="o" x-model="form.updates"><span x-text="o"></span></label></template></div>
+        </fieldset>
+        <fieldset class="grid gap-2">
+          <legend class="label mb-2">Confirmation <span class="req">*</span></legend>
+          <div class="choices choices-list" :aria-invalid="!!errors.confirmed"><label class="choice"><input type="checkbox" name="confirmation" x-model="form.confirmed"><span x-text="reg.confirmation"></span></label></div>
+          <span x-show="errors.confirmed" class="error" x-text="errors.confirmed"></span>
+        </fieldset>
         <p x-show="saveError" class="rounded-xl bg-salmon-soft p-3 text-sm" role="alert" x-text="saveError"></p>
       </div>
 
@@ -720,7 +757,7 @@
         <div x-ref="ticket" class="overflow-hidden rounded-[28px] border border-line shadow-lift">
           <div class="flex items-center gap-4 bg-forest px-6 py-5 text-cream">
             <svg class="h-12 w-12" aria-hidden="true"><use href="#logo-mark"/></svg>
-            <div><p class="wordmark">BLOOMCON <span class="text-mustard">2.0</span></p><p class="text-sm text-cream/70">Sat 14 Nov 2026, from 8:30 AM</p></div>
+            <div><p class="wordmark">BLOOMCON <span class="text-mustard">2.0</span></p><p class="text-sm text-cream/70">Sat 14 Nov 2026, doors open 8:30 AM</p></div>
           </div>
           <div class="grid grid-cols-[1fr_auto] gap-5 px-6 py-6">
             <dl class="min-w-0">
@@ -740,29 +777,27 @@
               <template x-for="id in (myReg?.programmes ?? [])" :key="id">
                 <li class="tone-soft inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium" :class="'tone-' + byId(id).phase"><span class="tone-bg h-2 w-2 rounded-full"></span><span x-text="byId(id).name"></span></li>
               </template>
-              <li x-show="myReg?.exhibitor" class="tone-marketplace tone-soft inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium"><span class="tone-bg h-2 w-2 rounded-full"></span>Booth application</li>
+              <li x-show="myReg?.exhibitor" class="tone-marketplace tone-soft inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium"><span class="tone-bg h-2 w-2 rounded-full"></span>Booth enquiry</li>
             </ul>
           </div>
         </div>
         <div class="grid gap-2 text-[15px] text-muted">
-          <p>Show this ticket at the entrance. We'll send the final programme to <span class="font-semibold text-ink" x-text="myReg?.phone"></span> on WhatsApp.</p>
-          <p x-show="myReg?.exhibitor">Your booth application is with the Trade Fair team. They'll reply on WhatsApp. Please don't pay anyone until you hear from the official number.</p>
-          <p x-show="!hasBackend" class="rounded-xl bg-mustard-soft p-3 text-sm text-ink">This ticket is saved on this device only. Registrations are not yet being sent to the organisers.</p>
+          <p>Please arrive early: The Playbook starts at 9:00 AM sharp. Show this ticket (a screenshot is fine) at the registration desk. Event-day updates go to <span class="font-semibold text-ink" x-text="myReg?.phone"></span>.</p>
+          <p x-show="myReg?.exhibitor">The Trade Fair team will contact you about a booth. Booths start from ₦50,000.</p>
+          <p>Need to change something? Email <a href="mailto:bizncareershubgl@gmail.com" class="font-semibold text-ink underline-offset-2 hover:underline">bizncareershubgl@gmail.com</a> or WhatsApp <a href="https://wa.me/2348130198616" class="font-semibold text-ink underline-offset-2 hover:underline" rel="noopener">0813 019 8616</a>.</p>
         </div>
         <div class="flex flex-wrap gap-2">
           <button type="button" @click="downloadIcs()" class="btn-outline px-5 py-2.5 text-sm"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-calendar-plus"/></svg> Add to calendar</button>
-          <button type="button" @click="editRegistration()" class="btn-outline px-5 py-2.5 text-sm"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-pencil"/></svg> Edit registration</button>
-          <button type="button" @click="cancelRegistration()" class="btn-ghost px-5 py-2.5 text-sm" x-text="confirmCancel ? 'Tap again to cancel' : 'Cancel registration'"></button>
         </div>
       </div>
     </form>
 
     <div x-show="!done" class="flex items-center justify-between gap-3 border-t border-line px-6 py-4">
       <button type="button" @click="back()" x-show="step > 0" class="btn-ghost px-4 py-2.5"><svg class="icon h-4 w-4" aria-hidden="true"><use href="#i-arrow-left"/></svg> Back</button>
-      <span x-show="step === 0" class="text-sm text-muted"><span class="tnum" x-text="selected.length + (form.exhibitor ? 1 : 0)"></span> selected</span>
+      <span x-show="step === 0" class="text-sm text-muted"><span class="req">*</span> Required</span>
       <button type="submit" form="regForm" :disabled="saving" class="btn-primary px-6 py-3 shadow-none disabled:opacity-60">
         <svg x-show="saving" class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.6"/></svg>
-        <span x-text="current === 'review' ? (editing ? 'Save changes' : 'Complete registration') : 'Continue'">Continue</span>
+        <span x-text="current === 'finish' ? (saving ? 'Sending…' : 'Complete registration') : 'Continue'">Continue</span>
       </button>
     </div>
   </div>

@@ -13,41 +13,6 @@
 
   const revealed = new WeakSet();
 
-  /* ---------- The flower ----------
-     Used by the hero and every programme card. Each petal stores its resting angle in
-     data-r and turns around the flower's centre (svgOrigin 0 0). */
-
-  function flowerParts(root) {
-    return {
-      outer: root.querySelectorAll('.f-petal'),
-      inner: root.querySelectorAll('.f-inner'),
-      centre: root.querySelectorAll('.f-ring, .f-core'),
-    };
-  }
-
-  // Folds the flower into its centre, ready to bloom
-  function closeFlower(root) {
-    const { outer, inner, centre } = flowerParts(root);
-    outer.forEach((p) => gsap.set(p, { svgOrigin: '0 0', rotation: +p.dataset.r - 60, scale: 0 }));
-    inner.forEach((p) => gsap.set(p, { svgOrigin: '0 0', rotation: +p.dataset.r + 40, scale: 0 }));
-    gsap.set(centre, { svgOrigin: '0 0', scale: 0 });
-  }
-
-  function openFlower(root) {
-    const { outer, inner, centre } = flowerParts(root);
-    [...outer, ...inner].forEach((p) => gsap.set(p, { svgOrigin: '0 0', rotation: +p.dataset.r, scale: 1 }));
-    gsap.set(centre, { scale: 1 });
-  }
-
-  // Centre pops, outer petals unfurl in turn, then the cream petals open on top
-  function bloomFlower(root, delay = 0, duration = 1.1) {
-    const { outer, inner, centre } = flowerParts(root);
-    return gsap.timeline({ delay })
-      .to(centre, { scale: 1, duration: 0.6, ease: 'back.out(2.5)', stagger: 0.08 }, 0)
-      .to(outer, { rotation: (i, el) => +el.dataset.r, scale: 1, duration, ease: 'elastic.out(1, .65)', stagger: 0.07 }, 0.1)
-      .to(inner, { rotation: (i, el) => +el.dataset.r, scale: 1, duration: duration * 0.8, ease: 'back.out(1.8)', stagger: 0.05 }, 0.45);
-  }
-
   /* ---------- Hero: the colour takeover ----------
      Plays on its own when the page loads, like a title sequence:
        1. the seed, with "One seed. Six ways to grow."
@@ -182,19 +147,17 @@
 
   /* ---------- Programme cards ---------- */
 
-  function closeBud(card) {
-    closeFlower(card);
-    gsap.set(card.querySelector('.card-ring'), { strokeDasharray: 460, strokeDashoffset: 460 });
+  // Each card's photo starts zoomed in and settles as the card arrives
+  function hidePhoto(card) {
+    gsap.set(card.querySelector('.card-photo'), { scale: 1.3 });
   }
 
-  function openBud(card) {
-    openFlower(card);
-    gsap.set(card.querySelector('.card-ring'), { strokeDashoffset: 0 });
+  function showPhoto(card) {
+    gsap.set(card.querySelector('.card-photo'), { scale: 1 });
   }
 
-  function bloom(card, delay = 0) {
-    bloomFlower(card, delay);
-    gsap.to(card.querySelector('.card-ring'), { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', delay });
+  function settlePhoto(card, delay = 0) {
+    gsap.to(card.querySelector('.card-photo'), { scale: 1, duration: 1.6, ease: 'expo.out', delay });
     gsap.from(card.querySelector('.card-icon'), { scale: 0, duration: 0.6, ease: 'back.out(2.4)', delay: delay + 0.35 });
   }
 
@@ -206,14 +169,13 @@
       duration: 1.1, ease: 'expo.out', delay: index * 0.11,
       onComplete: () => gsap.set(card, { clearProps: 'clipPath,transform' }),
     });
-    bloom(card, 0.2 + index * 0.11);
+    settlePhoto(card, 0.1 + index * 0.11);
   }
 
   function addHoverTilt(card) {
     const inner = card.querySelector('.card-inner');
     const icon = card.querySelector('.card-icon');
-    const { outer, inner: innerPetals } = flowerParts(card);
-    let turns = 0;
+    const photo = card.querySelector('.card-photo');
     const tiltX = gsap.quickTo(inner, 'rotationX', { duration: 0.5, ease: 'power3' });
     const tiltY = gsap.quickTo(inner, 'rotationY', { duration: 0.5, ease: 'power3' });
     gsap.set(inner, { transformPerspective: 1000 });
@@ -230,9 +192,7 @@
 
     card.addEventListener('pointerenter', () => {
       if (!revealed.has(card)) return;
-      turns += 1;
-      gsap.to(outer, { rotation: (i, el) => +el.dataset.r + turns * 60, duration: 0.9, ease: 'back.out(1.6)', overwrite: 'auto' });
-      gsap.to(innerPetals, { rotation: (i, el) => +el.dataset.r - turns * 60, duration: 0.9, ease: 'back.out(1.6)', overwrite: 'auto' });
+      gsap.to(photo, { scale: 1.07, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
       gsap.to(icon, { y: -3, rotation: -8, duration: 0.5, ease: 'back.out(3)' });
     });
 
@@ -240,6 +200,7 @@
       tiltX(0);
       tiltY(0);
       if (!revealed.has(card)) return;
+      gsap.to(photo, { scale: 1, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
       gsap.to(icon, { y: 0, rotation: 0, duration: 0.5 });
     });
   }
@@ -248,7 +209,7 @@
     const all = gsap.utils.toArray('.prog-card');
     if (!animate) { all.forEach((c) => revealed.add(c)); return; }
 
-    all.forEach(closeBud);
+    all.forEach(hidePhoto);
     gsap.set(all, { opacity: 0, y: 70, rotationX: -16, transformPerspective: 1000, transformOrigin: '50% 100%', clipPath: 'inset(35% 0% 0% 0% round 28px)' });
     ScrollTrigger.batch(all, { start: 'top 90%', once: true, onEnter: (batch) => batch.forEach(revealCard) });
     if (finePointer) all.forEach(addHoverTilt);
@@ -261,7 +222,7 @@
       if (revealed.has(c)) return;
       revealed.add(c);
       gsap.set(c, { opacity: 1, y: 0, rotationX: 0, clearProps: 'clipPath,transform' });
-      openBud(c);
+      showPhoto(c);
     });
   }
 
@@ -314,7 +275,7 @@
         onEnter: (els) => {
           if (reduced) return;
           gsap.fromTo(els, { opacity: 0, scale: 0.85, y: 30 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.6, delay: 0.2, ease: 'expo.out', stagger: 0.05, clearProps: 'transform' });
-          els.forEach((el, i) => { closeBud(el); bloom(el, 0.3 + i * 0.06); });
+          els.forEach((el, i) => { hidePhoto(el); settlePhoto(el, 0.3 + i * 0.06); });
         },
         onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.35, ease: 'power2.in' }),
       });
