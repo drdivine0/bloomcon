@@ -72,7 +72,7 @@ const PROGRAMS = [
   },
   {
     id: 'jobfest',
-    photo: 'audience-taking-notes',
+    photo: 'audience-listening',
     name: 'JobFest & Career Hub',
     tagline: 'Get a Job. Build a Career.',
     phase: 'pathway',
@@ -85,7 +85,7 @@ const PROGRAMS = [
   },
   {
     id: 'globaverse',
-    photo: 'attendee-with-notebook',
+    photo: 'speaker-and-screen',
     name: 'Globaverse',
     tagline: 'Winning in the Age of AI',
     phase: 'pathway',
@@ -186,9 +186,9 @@ const FAQS = [
   { q: 'Where can I get more information?', a: 'Email bizncareershubgl@gmail.com, or send a WhatsApp message to 0813 019 8616.' },
 ];
 
-// Photos from past BCMG gatherings. Each has a -800 and a -1600 version in assets/img/gallery;
+// Every photo from past BCMG gatherings. Each has a -800 and a -1600 version in assets/img/gallery;
 // w and h are the full-size version's real dimensions (some originals were smaller than 1600).
-const GALLERY = [
+const PHOTOS = [
   { photo: 'hall-wide', w: 1600, h: 900, alt: 'The full hall standing together on stage and in the aisles' },
   { photo: 'speaker-on-stage', w: 1200, h: 1600, alt: 'A speaker in a brown kaftan addressing the hall' },
   { photo: 'audience-taking-notes', w: 800, h: 600, alt: 'Attendees listening closely and taking notes' },
@@ -205,6 +205,10 @@ const GALLERY = [
   { photo: 'crowd-in-the-hall', w: 1600, h: 900, alt: 'A packed hall of attendees' },
   { photo: 'audience-listening', w: 640, h: 853, alt: 'Young professionals listening in the audience' },
 ];
+
+// The gallery shows the photos that aren't already used on the programme cards or elsewhere on the page
+const GALLERY = ['attendee-with-notebook', 'audience-taking-notes', 'guest-listening', 'audience-writing', 'speakers-line-up', 'award-handshake']
+  .map((name) => PHOTOS.find((p) => p.photo === name));
 
 const STEERING_PARTNERS = [
   { name: 'BCMG, Business & Career Ministry Group', logo: 'bcmg' },

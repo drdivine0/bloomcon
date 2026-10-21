@@ -178,7 +178,7 @@ document.addEventListener('alpine:init', () => {
       return `assets/img/gallery/${name}-${width}.webp`;
     },
     photoSrcset(name) {
-      const full = GALLERY.find((g) => g.photo === name)?.w ?? 1600;
+      const full = PHOTOS.find((p) => p.photo === name)?.w ?? 1600;
       return `${this.photoSrc(name, 800)} ${Math.min(800, full)}w, ${this.photoSrc(name, 1600)} ${full}w`;
     },
     get photo() {
